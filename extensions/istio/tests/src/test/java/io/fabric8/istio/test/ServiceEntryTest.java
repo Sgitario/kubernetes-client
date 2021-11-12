@@ -27,77 +27,76 @@ import org.junit.jupiter.api.Test;
 
 import io.fabric8.istio.api.networking.v1beta1.Gateway;
 import io.fabric8.istio.api.networking.v1beta1.GatewayBuilder;
+import io.fabric8.istio.api.networking.v1beta1.ServiceEntry;
+import io.fabric8.istio.api.networking.v1beta1.ServiceEntryBuilder;
 import io.fabric8.istio.client.IstioClient;
 import io.fabric8.istio.internal.api.networking.v1beta1.PortBuilder;
 import io.fabric8.istio.internal.api.networking.v1beta1.ServerBuilder;
 import io.fabric8.istio.internal.api.networking.v1beta1.ServerTLSSettingsBuilder;
+import io.fabric8.istio.internal.api.networking.v1beta1.ServiceEntryLocation;
 import io.fabric8.istio.mock.EnableIstioMockClient;
 import io.fabric8.istio.mock.IstioMockServer;
 import io.fabric8.kubernetes.api.model.DeletionPropagation;
 import okhttp3.mockwebserver.RecordedRequest;
 
 @EnableIstioMockClient
-class GatewayTest {
+class ServiceEntryTest {
 
   IstioClient client;
   IstioMockServer server;
 
   @Test
-  @DisplayName("Should get a Gateway")
+  @DisplayName("Should get a Service Entry")
   void testGet() {
-    Gateway service2 = new GatewayBuilder().withNewMetadata().withName("service2").endMetadata().build();
-    server.expect().get().withPath("/apis/networking.istio.io/v1beta1/namespaces/ns2/gateways/service2")
+    ServiceEntry service2 = new ServiceEntryBuilder().withNewMetadata().withName("service2").endMetadata().build();
+    server.expect().get().withPath("/apis/networking.istio.io/v1beta1/namespaces/ns2/serviceentries/service2")
       .andReturn(HttpURLConnection.HTTP_OK, service2)
       .once();
 
-    Gateway service = client.gateways().inNamespace("ns2").withName("service2").get();
+    ServiceEntry service = client.serviceEntries().inNamespace("ns2").withName("service2").get();
     assertNotNull(service);
     assertEquals("service2", service.getMetadata().getName());
   }
 
   @Test
-  @DisplayName("Should Create a Gateway")
+  @DisplayName("Should Create a Service Entry")
   void testCreate() throws InterruptedException {
-    // Example from: https://istio.io/latest/docs/reference/config/networking/virtual-service/
-    Gateway service = new GatewayBuilder()
+    // Example from: https://istio.io/latest/docs/reference/config/networking/service-entry/
+    ServiceEntry service = new ServiceEntryBuilder()
       .withNewMetadata()
-      .withName("my-gateway")
+      .withName("external-svc-https")
       .endMetadata()
       .withNewInternalSpec()
-      .withSelector(Collections.singletonMap("app", "my-gateway-controller"))
-      .withServers(new ServerBuilder()
-        .withPort(new PortBuilder().withNumber(80).withProtocol("HTTP").withName("http").build())
-        .withHosts("uk.bookinfo.com", "eu.bookinfo.com")
-        .withTls(new ServerTLSSettingsBuilder().withHttpsRedirect(true).build())
-        .build())
+      .withHosts("api.dropboxapi.com", "www.googleapis.com")
+      .withLocation(ServiceEntryLocation.MESH_EXTERNAL)
+      .withPorts(new PortBuilder().withName("https").withProtocol("TLS").withNumber(443).build())
       .endInternalSpec()
       .build();
 
-    server.expect().post().withPath("/apis/networking.istio.io/v1beta1/namespaces/ns2/gateways")
+    server.expect().post().withPath("/apis/networking.istio.io/v1beta1/namespaces/ns2/serviceentries")
       .andReturn(HttpURLConnection.HTTP_OK, service)
       .once();
-    service = client.gateways().inNamespace("ns2").create(service);
+    service = client.serviceEntries().inNamespace("ns2").create(service);
     assertNotNull(service);
 
     RecordedRequest recordedRequest = server.takeRequest();
     assertEquals("{\"apiVersion\":\"networking.istio.io/v1beta1\","
-        + "\"kind\":\"Gateway\","
-        + "\"metadata\":{\"name\":\"my-gateway\"},"
+        + "\"kind\":\"ServiceEntry\","
+        + "\"metadata\":{\"name\":\"external-svc-https\"},"
         + "\"spec\":{"
-        +   "\"selector\":{\"app\":\"my-gateway-controller\"},"
-        +   "\"servers\":[{\"hosts\":[\"uk.bookinfo.com\",\"eu.bookinfo.com\"],"
-        +   "\"port\":{\"name\":\"http\",\"number\":80,\"protocol\":\"HTTP\"},"
-        +   "\"tls\":{\"https_redirect\":true}}]}}",
+        +   "\"hosts\":[\"api.dropboxapi.com\",\"www.googleapis.com\"],"
+        +   "\"location\":0,"
+        +   "\"ports\":[{\"name\":\"https\",\"number\":443,\"protocol\":\"TLS\"}]}}",
       recordedRequest.getBody().readUtf8());
   }
 
   @Test
-  @DisplayName("Should Delete a Gateway")
+  @DisplayName("Should Delete a Service Entry")
   void testDelete() throws InterruptedException {
-    server.expect().delete().withPath("/apis/networking.istio.io/v1beta1/namespaces/ns3/gateways/service3")
-      .andReturn(HttpURLConnection.HTTP_OK, new GatewayBuilder().build())
+    server.expect().delete().withPath("/apis/networking.istio.io/v1beta1/namespaces/ns3/serviceentries/service3")
+      .andReturn(HttpURLConnection.HTTP_OK, new ServiceEntryBuilder().build())
       .once();
-    Boolean deleted = client.gateways().inNamespace("ns3").withName("service3").delete();
+    Boolean deleted = client.serviceEntries().inNamespace("ns3").withName("service3").delete();
     assertTrue(deleted);
 
     RecordedRequest recordedRequest = server.takeRequest();
@@ -107,10 +106,10 @@ class GatewayTest {
   @Test
   @DisplayName("Should delete with PropagationPolicy=Orphan")
   void testDeleteOrphan() throws InterruptedException {
-    server.expect().delete().withPath("/apis/networking.istio.io/v1beta1/namespaces/ns3/gateways/service3")
-      .andReturn(HttpURLConnection.HTTP_OK, new GatewayBuilder().build())
+    server.expect().delete().withPath("/apis/networking.istio.io/v1beta1/namespaces/ns3/serviceentries/service3")
+      .andReturn(HttpURLConnection.HTTP_OK, new ServiceEntryBuilder().build())
       .once();
-    Boolean deleted = client.gateways().inNamespace("ns3").withName("service3").withPropagationPolicy(DeletionPropagation.ORPHAN).delete();
+    Boolean deleted = client.serviceEntries().inNamespace("ns3").withName("service3").withPropagationPolicy(DeletionPropagation.ORPHAN).delete();
     assertTrue(deleted);
 
     RecordedRequest recordedRequest = server.takeRequest();
