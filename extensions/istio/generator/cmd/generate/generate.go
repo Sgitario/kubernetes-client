@@ -40,6 +40,7 @@ func main() {
 		reflect.TypeOf(client_networking_v1beta1.ServiceEntryList{}):    schemagen.Namespaced,
 		reflect.TypeOf(client_networking_v1beta1.SidecarList{}):         schemagen.Namespaced,
 		reflect.TypeOf(client_networking_v1beta1.VirtualServiceList{}):  schemagen.Namespaced,
+		reflect.TypeOf(client_networking_v1beta1.WorkloadEntryList{}):   schemagen.Namespaced,
 	}
 
 	// constraints and patterns for fields

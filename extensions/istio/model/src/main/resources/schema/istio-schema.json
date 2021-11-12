@@ -1511,6 +1511,67 @@
         "io.fabric8.kubernetes.api.model.KubernetesResource",
         "io.fabric8.kubernetes.api.model.KubernetesResourceList\u003cio.fabric8.istio.api.networking.v1beta1.VirtualService\u003e"
       ]
+    },
+    "istio_io_client-go_pkg_apis_networking_v1beta1_WorkloadEntry": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "default": "networking.istio.io/v1beta1",
+          "required": true
+        },
+        "kind": {
+          "type": "string",
+          "default": "WorkloadEntry",
+          "required": true
+        },
+        "metadata": {
+          "existingJavaType": "io.fabric8.kubernetes.api.model.ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/istio_io_api_networking_v1beta1_WorkloadEntry",
+          "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.WorkloadEntry"
+        },
+        "status": {
+          "$ref": "#/definitions/istio_io_api_meta_v1alpha1_IstioStatus",
+          "existingJavaType": "io.fabric8.istio.internal.api.meta.v1alpha1.IstioStatus"
+        }
+      },
+      "javaType": "io.fabric8.istio.api.networking.v1beta1.WorkloadEntry",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.HasMetadata",
+        "io.fabric8.kubernetes.api.model.Namespaced"
+      ]
+    },
+    "istio_io_client-go_pkg_apis_networking_v1beta1_WorkloadEntryList": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "default": "networking.istio.io/v1beta1",
+          "required": true
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/istio_io_client-go_pkg_apis_networking_v1beta1_WorkloadEntry",
+            "existingJavaType": "io.fabric8.istio.api.networking.v1beta1.WorkloadEntry"
+          }
+        },
+        "kind": {
+          "type": "string",
+          "default": "WorkloadEntryList",
+          "required": true
+        },
+        "metadata": {
+          "existingJavaType": "io.fabric8.kubernetes.api.model.ListMeta"
+        }
+      },
+      "javaType": "io.fabric8.istio.api.networking.v1beta1.WorkloadEntryList",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource",
+        "io.fabric8.kubernetes.api.model.KubernetesResourceList\u003cio.fabric8.istio.api.networking.v1beta1.WorkloadEntry\u003e"
+      ]
     }
   },
   "type": "object",
@@ -1730,6 +1791,14 @@
     "istio_io_client-go_pkg_apis_networking_v1beta1_VirtualServiceList": {
       "$ref": "#/definitions/istio_io_client-go_pkg_apis_networking_v1beta1_VirtualServiceList",
       "existingJavaType": "io.fabric8.istio.api.networking.v1beta1.VirtualServiceList"
+    },
+    "istio_io_client-go_pkg_apis_networking_v1beta1_WorkloadEntry": {
+      "$ref": "#/definitions/istio_io_client-go_pkg_apis_networking_v1beta1_WorkloadEntry",
+      "existingJavaType": "io.fabric8.istio.api.networking.v1beta1.WorkloadEntry"
+    },
+    "istio_io_client-go_pkg_apis_networking_v1beta1_WorkloadEntryList": {
+      "$ref": "#/definitions/istio_io_client-go_pkg_apis_networking_v1beta1_WorkloadEntryList",
+      "existingJavaType": "io.fabric8.istio.api.networking.v1beta1.WorkloadEntryList"
     }
   },
   "additionalProperties": false

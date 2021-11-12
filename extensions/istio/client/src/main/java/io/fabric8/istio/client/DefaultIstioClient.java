@@ -10,6 +10,8 @@ import io.fabric8.istio.api.networking.v1beta1.Sidecar;
 import io.fabric8.istio.api.networking.v1beta1.SidecarList;
 import io.fabric8.istio.api.networking.v1beta1.VirtualService;
 import io.fabric8.istio.api.networking.v1beta1.VirtualServiceList;
+import io.fabric8.istio.api.networking.v1beta1.WorkloadEntry;
+import io.fabric8.istio.api.networking.v1beta1.WorkloadEntryList;
 import io.fabric8.kubernetes.client.BaseClient;
 import io.fabric8.kubernetes.client.Config;
 import io.fabric8.kubernetes.client.ConfigBuilder;
@@ -77,5 +79,10 @@ public class DefaultIstioClient extends BaseClient implements NamespacedIstioCli
   @Override
   public MixedOperation<VirtualService, VirtualServiceList, Resource<VirtualService>> virtualServices() {
     return Handlers.getOperation(VirtualService.class, VirtualServiceList.class, this.getHttpClient(), this.getConfiguration());
+  }
+
+  @Override
+  public MixedOperation<WorkloadEntry, WorkloadEntryList, Resource<WorkloadEntry>> workloadEntries() {
+    return Handlers.getOperation(WorkloadEntry.class, WorkloadEntryList.class, this.getHttpClient(), this.getConfiguration());
   }
 }

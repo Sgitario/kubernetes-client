@@ -25,6 +25,8 @@ import io.fabric8.istio.api.networking.v1beta1.Sidecar;
 import io.fabric8.istio.api.networking.v1beta1.SidecarList;
 import io.fabric8.istio.api.networking.v1beta1.VirtualService;
 import io.fabric8.istio.api.networking.v1beta1.VirtualServiceList;
+import io.fabric8.istio.api.networking.v1beta1.WorkloadEntry;
+import io.fabric8.istio.api.networking.v1beta1.WorkloadEntryList;
 import io.fabric8.kubernetes.client.Client;
 import io.fabric8.kubernetes.client.dsl.MixedOperation;
 import io.fabric8.kubernetes.client.dsl.Resource;
@@ -43,4 +45,6 @@ public interface IstioClient extends Client {
   MixedOperation<Sidecar, SidecarList, Resource<Sidecar>> sidecars();
 
   MixedOperation<VirtualService, VirtualServiceList, Resource<VirtualService>> virtualServices();
+
+  MixedOperation<WorkloadEntry, WorkloadEntryList, Resource<WorkloadEntry>> workloadEntries();
 }

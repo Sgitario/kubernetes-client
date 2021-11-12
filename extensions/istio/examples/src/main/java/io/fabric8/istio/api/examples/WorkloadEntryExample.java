@@ -15,35 +15,37 @@
  */
 package io.fabric8.istio.api.examples;
 
+import java.util.Collections;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.fabric8.istio.api.networking.v1beta1.SidecarBuilder;
-import io.fabric8.istio.api.networking.v1beta1.SidecarList;
+import io.fabric8.istio.api.networking.v1beta1.WorkloadEntryBuilder;
+import io.fabric8.istio.api.networking.v1beta1.WorkloadEntryList;
 import io.fabric8.istio.client.IstioClient;
-import io.fabric8.istio.internal.api.networking.v1beta1.IstioEgressListenerBuilder;
 
-public class SidecarExample {
+public class WorkloadEntryExample {
   private static final String NAMESPACE = "test";
-  private static final Logger logger = LoggerFactory.getLogger(SidecarExample.class.getSimpleName());
+  private static final Logger logger = LoggerFactory.getLogger(WorkloadEntryExample.class.getSimpleName());
 
   public static void main(String[] args) {
     IstioClient client = ClientFactory.newClient(args);
 
-    System.out.println("Creating a sidecar");
-    // Example from: https://istio.io/latest/docs/reference/config/networking/sidecar/
-    client.sidecars().inNamespace(NAMESPACE).create(new SidecarBuilder()
+    System.out.println("Creating a workload entry");
+    // Example from: https://istio.io/latest/docs/reference/config/networking/workload-entry/
+    client.workloadEntries().inNamespace(NAMESPACE).create(new WorkloadEntryBuilder()
       .withNewMetadata()
-      .withName("default")
+      .withName("details-svc")
       .endMetadata()
       .withNewInternalSpec()
-      .withEgress(new IstioEgressListenerBuilder()
-        .withHosts("./*", "istio-system/*").build())
+      .withServiceAccount("details-legacy")
+      .withAddress("2.2.2.2")
+      .withLabels(Collections.singletonMap("app", "details-legacy"))
       .endInternalSpec()
       .build());
 
-    logger.info("Listing sidecar instances:");
-    SidecarList list = client.sidecars().inNamespace(NAMESPACE).list();
+    logger.info("Listing workload entry instances:");
+    WorkloadEntryList list = client.workloadEntries().inNamespace(NAMESPACE).list();
     list.getItems().forEach(b -> logger.info(b.getMetadata().getName()));
     logger.info("Done");
   }

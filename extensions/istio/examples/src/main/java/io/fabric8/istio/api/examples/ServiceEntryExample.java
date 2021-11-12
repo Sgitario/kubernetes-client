@@ -20,17 +20,9 @@ import org.slf4j.LoggerFactory;
 
 import io.fabric8.istio.api.networking.v1beta1.ServiceEntryBuilder;
 import io.fabric8.istio.api.networking.v1beta1.ServiceEntryList;
-import io.fabric8.istio.api.networking.v1beta1.VirtualServiceBuilder;
-import io.fabric8.istio.api.networking.v1beta1.VirtualServiceList;
 import io.fabric8.istio.client.IstioClient;
-import io.fabric8.istio.internal.api.networking.v1beta1.Destination;
-import io.fabric8.istio.internal.api.networking.v1beta1.HTTPMatchRequestBuilder;
-import io.fabric8.istio.internal.api.networking.v1beta1.HTTPRewriteBuilder;
-import io.fabric8.istio.internal.api.networking.v1beta1.HTTPRouteBuilder;
-import io.fabric8.istio.internal.api.networking.v1beta1.HTTPRouteDestinationBuilder;
 import io.fabric8.istio.internal.api.networking.v1beta1.PortBuilder;
 import io.fabric8.istio.internal.api.networking.v1beta1.ServiceEntryLocation;
-import io.fabric8.istio.internal.api.networking.v1beta1.StringMatch;
 
 public class ServiceEntryExample {
   private static final String NAMESPACE = "test";
