@@ -24,9 +24,9 @@ import io.fabric8.istio.client.IstioClient;
 import io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsBuilder;
 import io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsSimple;
 
-public class DestinationRuleInstances {
+public class DestinationRuleExample {
   private static final String NAMESPACE = "test";
-  private static final Logger logger = LoggerFactory.getLogger(DestinationRuleInstances.class.getSimpleName());
+  private static final Logger logger = LoggerFactory.getLogger(DestinationRuleExample.class.getSimpleName());
 
   public static void main(String[] args) {
     IstioClient client = ClientFactory.newClient(args);

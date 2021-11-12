@@ -27,9 +27,9 @@ import io.fabric8.istio.internal.api.networking.v1beta1.PortBuilder;
 import io.fabric8.istio.internal.api.networking.v1beta1.ServerBuilder;
 import io.fabric8.istio.internal.api.networking.v1beta1.ServerTLSSettingsBuilder;
 
-public class GatewayInstances {
+public class GatewayExample {
   private static final String NAMESPACE = "test";
-  private static final Logger logger = LoggerFactory.getLogger(GatewayInstances.class.getSimpleName());
+  private static final Logger logger = LoggerFactory.getLogger(GatewayExample.class.getSimpleName());
 
   public static void main(String[] args) {
     IstioClient client = ClientFactory.newClient(args);

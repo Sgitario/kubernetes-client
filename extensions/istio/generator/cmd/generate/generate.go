@@ -38,6 +38,7 @@ func main() {
 		reflect.TypeOf(client_networking_v1beta1.DestinationRuleList{}): schemagen.Namespaced,
 		reflect.TypeOf(client_networking_v1beta1.GatewayList{}):         schemagen.Namespaced,
 		reflect.TypeOf(client_networking_v1beta1.ServiceEntryList{}):    schemagen.Namespaced,
+		reflect.TypeOf(client_networking_v1beta1.SidecarList{}):         schemagen.Namespaced,
 		reflect.TypeOf(client_networking_v1beta1.VirtualServiceList{}):  schemagen.Namespaced,
 	}
 

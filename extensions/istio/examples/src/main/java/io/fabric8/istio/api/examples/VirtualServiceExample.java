@@ -28,9 +28,9 @@ import io.fabric8.istio.internal.api.networking.v1beta1.HTTPRouteBuilder;
 import io.fabric8.istio.internal.api.networking.v1beta1.HTTPRouteDestinationBuilder;
 import io.fabric8.istio.internal.api.networking.v1beta1.StringMatch;
 
-public class VirtualServiceInstances {
+public class VirtualServiceExample {
   private static final String NAMESPACE = "test";
-  private static final Logger logger = LoggerFactory.getLogger(VirtualServiceInstances.class.getSimpleName());
+  private static final Logger logger = LoggerFactory.getLogger(VirtualServiceExample.class.getSimpleName());
 
   public static void main(String[] args) {
     IstioClient client = ClientFactory.newClient(args);
