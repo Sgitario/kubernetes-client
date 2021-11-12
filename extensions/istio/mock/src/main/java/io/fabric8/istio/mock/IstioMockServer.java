@@ -49,7 +49,7 @@ public class IstioMockServer extends KubernetesMockServer {
 
   @Override
   public String[] getRootPaths() {
-    return new String[] { "/api", "/apis/networking.istio.io", "/apis/security.istio.io" };
+    return new String[] { "/api", "/apis/networking.istio.io", "/apis/security.istio.io", "/apis/telemetry.istio.io" };
   }
 
   public NamespacedIstioClient createIstio() {

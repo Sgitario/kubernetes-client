@@ -33,6 +33,8 @@ import io.fabric8.istio.api.security.v1beta1.PeerAuthentication;
 import io.fabric8.istio.api.security.v1beta1.PeerAuthenticationList;
 import io.fabric8.istio.api.security.v1beta1.RequestAuthentication;
 import io.fabric8.istio.api.security.v1beta1.RequestAuthenticationList;
+import io.fabric8.istio.api.telemetry.v1alpha1.Telemetry;
+import io.fabric8.istio.api.telemetry.v1alpha1.TelemetryList;
 import io.fabric8.kubernetes.client.Client;
 import io.fabric8.kubernetes.client.dsl.MixedOperation;
 import io.fabric8.kubernetes.client.dsl.Resource;
@@ -60,4 +62,7 @@ public interface IstioClient extends Client {
   MixedOperation<RequestAuthentication, RequestAuthenticationList, Resource<RequestAuthentication>> requestAuthentications();
 
   MixedOperation<AuthorizationPolicy, AuthorizationPolicyList, Resource<AuthorizationPolicy>> authorizationPolicies();
+
+  // telemetry
+  MixedOperation<Telemetry, TelemetryList, Resource<Telemetry>> telemetries();
 }

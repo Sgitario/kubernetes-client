@@ -25,10 +25,12 @@ import (
 	// Internal APIs:
 	api_networking_v1beta1 "istio.io/api/networking/v1beta1"
 	api_security_v1beta1 "istio.io/api/security/v1beta1"
+	api_telemetry_v1alpha1 "istio.io/api/telemetry/v1alpha1"
 
 	// External APIs:
 	client_networking_v1beta1 "istio.io/client-go/pkg/apis/networking/v1beta1"
 	client_security_v1beta1 "istio.io/client-go/pkg/apis/security/v1beta1"
+	client_telemetry_v1alpha1 "istio.io/client-go/pkg/apis/telemetry/v1alpha1"
 
 	"reflect"
 )
@@ -38,8 +40,6 @@ func main() {
 	// the CRD List types for which the model should be generated
 	// no other types need to be defined as they are auto discovered
 	crdLists := map[reflect.Type]schemagen.CrdScope{
-		// common
-
 		// networking
 		reflect.TypeOf(client_networking_v1beta1.DestinationRuleList{}): schemagen.Namespaced,
 		reflect.TypeOf(client_networking_v1beta1.GatewayList{}):         schemagen.Namespaced,
@@ -52,6 +52,9 @@ func main() {
 		reflect.TypeOf(client_security_v1beta1.PeerAuthenticationList{}):    schemagen.Namespaced,
 		reflect.TypeOf(client_security_v1beta1.RequestAuthenticationList{}): schemagen.Namespaced,
 		reflect.TypeOf(client_security_v1beta1.AuthorizationPolicyList{}):   schemagen.Namespaced,
+
+		// telemetry
+		reflect.TypeOf(client_telemetry_v1alpha1.TelemetryList{}): schemagen.Namespaced,
 	}
 
 	// constraints and patterns for fields
@@ -68,6 +71,8 @@ func main() {
 		{GoType: reflect.TypeOf(api_networking_v1beta1.LocalityLoadBalancerSetting_Distribute{}), JavaClass: "io.fabric8.istio.internal.api.networking.v1beta1.Distribute"},
 		{GoType: reflect.TypeOf(api_networking_v1beta1.LocalityLoadBalancerSetting_Failover{}), JavaClass: "io.fabric8.istio.internal.api.networking.v1beta1.Failover"},
 		{GoType: reflect.TypeOf(api_security_v1beta1.AuthorizationPolicy{}), JavaClass: "io.fabric8.istio.internal.api.security.v1beta1.AuthorizationPolicySpec"},
+		{GoType: reflect.TypeOf(api_telemetry_v1alpha1.Tracing_CustomTag{}), JavaClass: "io.fabric8.istio.internal.api.telemetry.v1alpha1.CustomTag"},
+		{GoType: reflect.TypeOf(api_telemetry_v1alpha1.MetricSelector{}), JavaClass: "io.fabric8.istio.internal.api.telemetry.v1alpha1.MetricSelector"},
 		// Due to issue in sundrio that generates duplicated methods named `hasMatchingAllowOrigin`
 		{GoType: reflect.TypeOf(api_networking_v1beta1.CorsPolicy{}), JavaClass: "io.fabric8.istio.internal.api.networking.v1beta1.CorsPolicy"},
 	}
@@ -82,6 +87,7 @@ func main() {
 	packageMapping := map[string]schemagen.PackageInformation{
 		"istio.io/client-go/pkg/apis/networking/v1beta1": {JavaPackage: "io.fabric8.istio.api.networking.v1beta1", ApiGroup: "networking.istio.io", ApiVersion: "v1beta1"},
 		"istio.io/client-go/pkg/apis/security/v1beta1":   {JavaPackage: "io.fabric8.istio.api.security.v1beta1", ApiGroup: "security.istio.io", ApiVersion: "v1beta1"},
+		"istio.io/client-go/pkg/apis/telemetry/v1alpha1": {JavaPackage: "io.fabric8.istio.api.telemetry.v1alpha1", ApiGroup: "telemetry.istio.io", ApiVersion: "v1alpha1"},
 	}
 
 	// converts all packages starting with <key> to a java package using an automated scheme:
@@ -95,6 +101,7 @@ func main() {
 	manualTypeMap := map[reflect.Type]string{
 		// reflect.TypeOf(time.Time{}): "java.util.TimeZone",
 		reflect.TypeOf(types.BoolValue{}):   "java.lang.Boolean",
+		reflect.TypeOf(types.DoubleValue{}): "java.lang.Double",
 		reflect.TypeOf(types.Duration{}):    "java.time.Duration",
 		reflect.TypeOf(types.Timestamp{}):   "java.lang.Long",
 		reflect.TypeOf(types.UInt32Value{}): "java.lang.Integer",

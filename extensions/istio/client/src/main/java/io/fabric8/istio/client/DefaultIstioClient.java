@@ -18,6 +18,8 @@ import io.fabric8.istio.api.security.v1beta1.PeerAuthentication;
 import io.fabric8.istio.api.security.v1beta1.PeerAuthenticationList;
 import io.fabric8.istio.api.security.v1beta1.RequestAuthentication;
 import io.fabric8.istio.api.security.v1beta1.RequestAuthenticationList;
+import io.fabric8.istio.api.telemetry.v1alpha1.Telemetry;
+import io.fabric8.istio.api.telemetry.v1alpha1.TelemetryList;
 import io.fabric8.kubernetes.client.BaseClient;
 import io.fabric8.kubernetes.client.Config;
 import io.fabric8.kubernetes.client.ConfigBuilder;
@@ -108,9 +110,15 @@ public class DefaultIstioClient extends BaseClient implements NamespacedIstioCli
       this.getConfiguration());
   }
 
+  @Override
   public MixedOperation<AuthorizationPolicy, AuthorizationPolicyList, Resource<AuthorizationPolicy>> authorizationPolicies() {
     return Handlers.getOperation(AuthorizationPolicy.class, AuthorizationPolicyList.class, this.getHttpClient(),
       this.getConfiguration());
   }
 
+  // telemetry
+  @Override
+  public MixedOperation<Telemetry, TelemetryList, Resource<Telemetry>> telemetries() {
+    return Handlers.getOperation(Telemetry.class, TelemetryList.class, this.getHttpClient(), this.getConfiguration());
+  }
 }
