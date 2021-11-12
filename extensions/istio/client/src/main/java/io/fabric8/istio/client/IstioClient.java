@@ -27,6 +27,12 @@ import io.fabric8.istio.api.networking.v1beta1.VirtualService;
 import io.fabric8.istio.api.networking.v1beta1.VirtualServiceList;
 import io.fabric8.istio.api.networking.v1beta1.WorkloadEntry;
 import io.fabric8.istio.api.networking.v1beta1.WorkloadEntryList;
+import io.fabric8.istio.api.security.v1beta1.AuthorizationPolicy;
+import io.fabric8.istio.api.security.v1beta1.AuthorizationPolicyList;
+import io.fabric8.istio.api.security.v1beta1.PeerAuthentication;
+import io.fabric8.istio.api.security.v1beta1.PeerAuthenticationList;
+import io.fabric8.istio.api.security.v1beta1.RequestAuthentication;
+import io.fabric8.istio.api.security.v1beta1.RequestAuthenticationList;
 import io.fabric8.kubernetes.client.Client;
 import io.fabric8.kubernetes.client.dsl.MixedOperation;
 import io.fabric8.kubernetes.client.dsl.Resource;
@@ -47,4 +53,11 @@ public interface IstioClient extends Client {
   MixedOperation<VirtualService, VirtualServiceList, Resource<VirtualService>> virtualServices();
 
   MixedOperation<WorkloadEntry, WorkloadEntryList, Resource<WorkloadEntry>> workloadEntries();
+
+  // security
+  MixedOperation<PeerAuthentication, PeerAuthenticationList, Resource<PeerAuthentication>> peerAuthentications();
+
+  MixedOperation<RequestAuthentication, RequestAuthenticationList, Resource<RequestAuthentication>> requestAuthentications();
+
+  MixedOperation<AuthorizationPolicy, AuthorizationPolicyList, Resource<AuthorizationPolicy>> authorizationPolicies();
 }

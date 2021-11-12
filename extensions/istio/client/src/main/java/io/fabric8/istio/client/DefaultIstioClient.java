@@ -12,6 +12,12 @@ import io.fabric8.istio.api.networking.v1beta1.VirtualService;
 import io.fabric8.istio.api.networking.v1beta1.VirtualServiceList;
 import io.fabric8.istio.api.networking.v1beta1.WorkloadEntry;
 import io.fabric8.istio.api.networking.v1beta1.WorkloadEntryList;
+import io.fabric8.istio.api.security.v1beta1.AuthorizationPolicy;
+import io.fabric8.istio.api.security.v1beta1.AuthorizationPolicyList;
+import io.fabric8.istio.api.security.v1beta1.PeerAuthentication;
+import io.fabric8.istio.api.security.v1beta1.PeerAuthenticationList;
+import io.fabric8.istio.api.security.v1beta1.RequestAuthentication;
+import io.fabric8.istio.api.security.v1beta1.RequestAuthenticationList;
 import io.fabric8.kubernetes.client.BaseClient;
 import io.fabric8.kubernetes.client.Config;
 import io.fabric8.kubernetes.client.ConfigBuilder;
@@ -56,9 +62,12 @@ public class DefaultIstioClient extends BaseClient implements NamespacedIstioCli
     return new WithRequestCallable<>(this, requestConfig);
   }
 
+  // networking
+
   @Override
   public MixedOperation<DestinationRule, DestinationRuleList, Resource<DestinationRule>> destinationRules() {
-    return Handlers.getOperation(DestinationRule.class, DestinationRuleList.class, this.getHttpClient(), this.getConfiguration());
+    return Handlers.getOperation(DestinationRule.class, DestinationRuleList.class, this.getHttpClient(),
+      this.getConfiguration());
   }
 
   @Override
@@ -85,4 +94,23 @@ public class DefaultIstioClient extends BaseClient implements NamespacedIstioCli
   public MixedOperation<WorkloadEntry, WorkloadEntryList, Resource<WorkloadEntry>> workloadEntries() {
     return Handlers.getOperation(WorkloadEntry.class, WorkloadEntryList.class, this.getHttpClient(), this.getConfiguration());
   }
+
+  // security
+  @Override
+  public MixedOperation<PeerAuthentication, PeerAuthenticationList, Resource<PeerAuthentication>> peerAuthentications() {
+    return Handlers.getOperation(PeerAuthentication.class, PeerAuthenticationList.class, this.getHttpClient(),
+      this.getConfiguration());
+  }
+
+  @Override
+  public MixedOperation<RequestAuthentication, RequestAuthenticationList, Resource<RequestAuthentication>> requestAuthentications() {
+    return Handlers.getOperation(RequestAuthentication.class, RequestAuthenticationList.class, this.getHttpClient(),
+      this.getConfiguration());
+  }
+
+  public MixedOperation<AuthorizationPolicy, AuthorizationPolicyList, Resource<AuthorizationPolicy>> authorizationPolicies() {
+    return Handlers.getOperation(AuthorizationPolicy.class, AuthorizationPolicyList.class, this.getHttpClient(),
+      this.getConfiguration());
+  }
+
 }

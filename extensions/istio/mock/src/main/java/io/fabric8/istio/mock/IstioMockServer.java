@@ -15,6 +15,12 @@
  */
 package io.fabric8.istio.mock;
 
+import static io.fabric8.kubernetes.client.utils.HttpClientUtils.createHttpClientForMockServer;
+import static okhttp3.TlsVersion.TLS_1_2;
+
+import java.util.Map;
+import java.util.Queue;
+
 import io.fabric8.istio.client.DefaultIstioClient;
 import io.fabric8.istio.client.NamespacedIstioClient;
 import io.fabric8.kubernetes.client.Config;
@@ -25,12 +31,6 @@ import io.fabric8.mockwebserver.ServerRequest;
 import io.fabric8.mockwebserver.ServerResponse;
 import okhttp3.mockwebserver.Dispatcher;
 import okhttp3.mockwebserver.MockWebServer;
-
-import java.util.Map;
-import java.util.Queue;
-
-import static io.fabric8.kubernetes.client.utils.HttpClientUtils.createHttpClientForMockServer;
-import static okhttp3.TlsVersion.TLS_1_2;
 
 public class IstioMockServer extends KubernetesMockServer {
   private boolean disableApiGroupCheck = true;
@@ -49,7 +49,7 @@ public class IstioMockServer extends KubernetesMockServer {
 
   @Override
   public String[] getRootPaths() {
-    return new String[]{"/api","/apis/networking.istio.io"};
+    return new String[] { "/api", "/apis/networking.istio.io", "/apis/security.istio.io" };
   }
 
   public NamespacedIstioClient createIstio() {

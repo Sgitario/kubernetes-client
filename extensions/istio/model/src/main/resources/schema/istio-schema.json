@@ -1207,6 +1207,134 @@
         "io.fabric8.kubernetes.api.model.KubernetesResource"
       ]
     },
+    "istio_io_api_security_v1beta1_JWTHeader": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.security.v1beta1.JWTHeader",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource"
+      ]
+    },
+    "istio_io_api_security_v1beta1_JWTRule": {
+      "type": "object",
+      "properties": {
+        "audiences": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "forward_original_token": {
+          "type": "boolean"
+        },
+        "from_headers": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "$ref": "#/definitions/istio_io_api_security_v1beta1_JWTHeader",
+            "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.JWTHeader"
+          }
+        },
+        "from_params": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "issuer": {
+          "type": "string"
+        },
+        "jwks": {
+          "type": "string"
+        },
+        "jwks_uri": {
+          "type": "string"
+        },
+        "output_payload_to_header": {
+          "type": "string"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.security.v1beta1.JWTRule",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource"
+      ]
+    },
+    "istio_io_api_security_v1beta1_PeerAuthentication": {
+      "type": "object",
+      "properties": {
+        "mtls": {
+          "$ref": "#/definitions/istio_io_api_security_v1beta1_PeerAuthentication_MutualTLS",
+          "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.PeerAuthentication_MutualTLS"
+        },
+        "port_level_mtls": {
+          "type": "object",
+          "existingJavaType": "java.util.Map\u003cLong,io.fabric8.istio.internal.api.security.v1beta1.PeerAuthentication_MutualTLS\u003e"
+        },
+        "selector": {
+          "$ref": "#/definitions/istio_io_api_type_v1beta1_WorkloadSelector",
+          "existingJavaType": "io.fabric8.istio.internal.api.type.v1beta1.WorkloadSelector"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.security.v1beta1.PeerAuthentication",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource"
+      ]
+    },
+    "istio_io_api_security_v1beta1_PeerAuthentication_MutualTLS": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "type": "integer"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.security.v1beta1.PeerAuthentication_MutualTLS",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource"
+      ]
+    },
+    "istio_io_api_security_v1beta1_RequestAuthentication": {
+      "type": "object",
+      "properties": {
+        "jwt_rules": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "$ref": "#/definitions/istio_io_api_security_v1beta1_JWTRule",
+            "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.JWTRule"
+          }
+        },
+        "selector": {
+          "$ref": "#/definitions/istio_io_api_type_v1beta1_WorkloadSelector",
+          "existingJavaType": "io.fabric8.istio.internal.api.type.v1beta1.WorkloadSelector"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.security.v1beta1.RequestAuthentication",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource"
+      ]
+    },
+    "istio_io_api_type_v1beta1_WorkloadSelector": {
+      "type": "object",
+      "properties": {
+        "match_labels": {
+          "type": "object",
+          "existingJavaType": "java.util.Map\u003cString,String\u003e"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.type.v1beta1.WorkloadSelector",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource"
+      ]
+    },
     "istio_io_client-go_pkg_apis_networking_v1beta1_DestinationRule": {
       "type": "object",
       "properties": {
@@ -1572,6 +1700,188 @@
         "io.fabric8.kubernetes.api.model.KubernetesResource",
         "io.fabric8.kubernetes.api.model.KubernetesResourceList\u003cio.fabric8.istio.api.networking.v1beta1.WorkloadEntry\u003e"
       ]
+    },
+    "istio_io_client-go_pkg_apis_security_v1beta1_AuthorizationPolicy": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "default": "security.istio.io/v1beta1",
+          "required": true
+        },
+        "kind": {
+          "type": "string",
+          "default": "AuthorizationPolicy",
+          "required": true
+        },
+        "metadata": {
+          "existingJavaType": "io.fabric8.kubernetes.api.model.ObjectMeta"
+        },
+        "spec": {
+          "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.AuthorizationPolicySpec"
+        },
+        "status": {
+          "$ref": "#/definitions/istio_io_api_meta_v1alpha1_IstioStatus",
+          "existingJavaType": "io.fabric8.istio.internal.api.meta.v1alpha1.IstioStatus"
+        }
+      },
+      "javaType": "io.fabric8.istio.api.security.v1beta1.AuthorizationPolicy",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.HasMetadata",
+        "io.fabric8.kubernetes.api.model.Namespaced"
+      ]
+    },
+    "istio_io_client-go_pkg_apis_security_v1beta1_AuthorizationPolicyList": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "default": "security.istio.io/v1beta1",
+          "required": true
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/istio_io_client-go_pkg_apis_security_v1beta1_AuthorizationPolicy",
+            "existingJavaType": "io.fabric8.istio.api.security.v1beta1.AuthorizationPolicy"
+          }
+        },
+        "kind": {
+          "type": "string",
+          "default": "AuthorizationPolicyList",
+          "required": true
+        },
+        "metadata": {
+          "existingJavaType": "io.fabric8.kubernetes.api.model.ListMeta"
+        }
+      },
+      "javaType": "io.fabric8.istio.api.security.v1beta1.AuthorizationPolicyList",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource",
+        "io.fabric8.kubernetes.api.model.KubernetesResourceList\u003cio.fabric8.istio.api.security.v1beta1.AuthorizationPolicy\u003e"
+      ]
+    },
+    "istio_io_client-go_pkg_apis_security_v1beta1_PeerAuthentication": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "default": "security.istio.io/v1beta1",
+          "required": true
+        },
+        "kind": {
+          "type": "string",
+          "default": "PeerAuthentication",
+          "required": true
+        },
+        "metadata": {
+          "existingJavaType": "io.fabric8.kubernetes.api.model.ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/istio_io_api_security_v1beta1_PeerAuthentication",
+          "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.PeerAuthentication"
+        },
+        "status": {
+          "$ref": "#/definitions/istio_io_api_meta_v1alpha1_IstioStatus",
+          "existingJavaType": "io.fabric8.istio.internal.api.meta.v1alpha1.IstioStatus"
+        }
+      },
+      "javaType": "io.fabric8.istio.api.security.v1beta1.PeerAuthentication",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.HasMetadata",
+        "io.fabric8.kubernetes.api.model.Namespaced"
+      ]
+    },
+    "istio_io_client-go_pkg_apis_security_v1beta1_PeerAuthenticationList": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "default": "security.istio.io/v1beta1",
+          "required": true
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/istio_io_client-go_pkg_apis_security_v1beta1_PeerAuthentication",
+            "existingJavaType": "io.fabric8.istio.api.security.v1beta1.PeerAuthentication"
+          }
+        },
+        "kind": {
+          "type": "string",
+          "default": "PeerAuthenticationList",
+          "required": true
+        },
+        "metadata": {
+          "existingJavaType": "io.fabric8.kubernetes.api.model.ListMeta"
+        }
+      },
+      "javaType": "io.fabric8.istio.api.security.v1beta1.PeerAuthenticationList",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource",
+        "io.fabric8.kubernetes.api.model.KubernetesResourceList\u003cio.fabric8.istio.api.security.v1beta1.PeerAuthentication\u003e"
+      ]
+    },
+    "istio_io_client-go_pkg_apis_security_v1beta1_RequestAuthentication": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "default": "security.istio.io/v1beta1",
+          "required": true
+        },
+        "kind": {
+          "type": "string",
+          "default": "RequestAuthentication",
+          "required": true
+        },
+        "metadata": {
+          "existingJavaType": "io.fabric8.kubernetes.api.model.ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/istio_io_api_security_v1beta1_RequestAuthentication",
+          "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.RequestAuthentication"
+        },
+        "status": {
+          "$ref": "#/definitions/istio_io_api_meta_v1alpha1_IstioStatus",
+          "existingJavaType": "io.fabric8.istio.internal.api.meta.v1alpha1.IstioStatus"
+        }
+      },
+      "javaType": "io.fabric8.istio.api.security.v1beta1.RequestAuthentication",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.HasMetadata",
+        "io.fabric8.kubernetes.api.model.Namespaced"
+      ]
+    },
+    "istio_io_client-go_pkg_apis_security_v1beta1_RequestAuthenticationList": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "default": "security.istio.io/v1beta1",
+          "required": true
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/istio_io_client-go_pkg_apis_security_v1beta1_RequestAuthentication",
+            "existingJavaType": "io.fabric8.istio.api.security.v1beta1.RequestAuthentication"
+          }
+        },
+        "kind": {
+          "type": "string",
+          "default": "RequestAuthenticationList",
+          "required": true
+        },
+        "metadata": {
+          "existingJavaType": "io.fabric8.kubernetes.api.model.ListMeta"
+        }
+      },
+      "javaType": "io.fabric8.istio.api.security.v1beta1.RequestAuthenticationList",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource",
+        "io.fabric8.kubernetes.api.model.KubernetesResourceList\u003cio.fabric8.istio.api.security.v1beta1.RequestAuthentication\u003e"
+      ]
     }
   },
   "type": "object",
@@ -1752,6 +2062,30 @@
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_WorkloadSelector",
       "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.WorkloadSelector"
     },
+    "istio_io_api_security_v1beta1_JWTHeader": {
+      "$ref": "#/definitions/istio_io_api_security_v1beta1_JWTHeader",
+      "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.JWTHeader"
+    },
+    "istio_io_api_security_v1beta1_JWTRule": {
+      "$ref": "#/definitions/istio_io_api_security_v1beta1_JWTRule",
+      "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.JWTRule"
+    },
+    "istio_io_api_security_v1beta1_PeerAuthentication": {
+      "$ref": "#/definitions/istio_io_api_security_v1beta1_PeerAuthentication",
+      "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.PeerAuthentication"
+    },
+    "istio_io_api_security_v1beta1_PeerAuthentication_MutualTLS": {
+      "$ref": "#/definitions/istio_io_api_security_v1beta1_PeerAuthentication_MutualTLS",
+      "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.PeerAuthentication_MutualTLS"
+    },
+    "istio_io_api_security_v1beta1_RequestAuthentication": {
+      "$ref": "#/definitions/istio_io_api_security_v1beta1_RequestAuthentication",
+      "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.RequestAuthentication"
+    },
+    "istio_io_api_type_v1beta1_WorkloadSelector": {
+      "$ref": "#/definitions/istio_io_api_type_v1beta1_WorkloadSelector",
+      "existingJavaType": "io.fabric8.istio.internal.api.type.v1beta1.WorkloadSelector"
+    },
     "istio_io_client-go_pkg_apis_networking_v1beta1_DestinationRule": {
       "$ref": "#/definitions/istio_io_client-go_pkg_apis_networking_v1beta1_DestinationRule",
       "existingJavaType": "io.fabric8.istio.api.networking.v1beta1.DestinationRule"
@@ -1799,6 +2133,30 @@
     "istio_io_client-go_pkg_apis_networking_v1beta1_WorkloadEntryList": {
       "$ref": "#/definitions/istio_io_client-go_pkg_apis_networking_v1beta1_WorkloadEntryList",
       "existingJavaType": "io.fabric8.istio.api.networking.v1beta1.WorkloadEntryList"
+    },
+    "istio_io_client-go_pkg_apis_security_v1beta1_AuthorizationPolicy": {
+      "$ref": "#/definitions/istio_io_client-go_pkg_apis_security_v1beta1_AuthorizationPolicy",
+      "existingJavaType": "io.fabric8.istio.api.security.v1beta1.AuthorizationPolicy"
+    },
+    "istio_io_client-go_pkg_apis_security_v1beta1_AuthorizationPolicyList": {
+      "$ref": "#/definitions/istio_io_client-go_pkg_apis_security_v1beta1_AuthorizationPolicyList",
+      "existingJavaType": "io.fabric8.istio.api.security.v1beta1.AuthorizationPolicyList"
+    },
+    "istio_io_client-go_pkg_apis_security_v1beta1_PeerAuthentication": {
+      "$ref": "#/definitions/istio_io_client-go_pkg_apis_security_v1beta1_PeerAuthentication",
+      "existingJavaType": "io.fabric8.istio.api.security.v1beta1.PeerAuthentication"
+    },
+    "istio_io_client-go_pkg_apis_security_v1beta1_PeerAuthenticationList": {
+      "$ref": "#/definitions/istio_io_client-go_pkg_apis_security_v1beta1_PeerAuthenticationList",
+      "existingJavaType": "io.fabric8.istio.api.security.v1beta1.PeerAuthenticationList"
+    },
+    "istio_io_client-go_pkg_apis_security_v1beta1_RequestAuthentication": {
+      "$ref": "#/definitions/istio_io_client-go_pkg_apis_security_v1beta1_RequestAuthentication",
+      "existingJavaType": "io.fabric8.istio.api.security.v1beta1.RequestAuthentication"
+    },
+    "istio_io_client-go_pkg_apis_security_v1beta1_RequestAuthenticationList": {
+      "$ref": "#/definitions/istio_io_client-go_pkg_apis_security_v1beta1_RequestAuthenticationList",
+      "existingJavaType": "io.fabric8.istio.api.security.v1beta1.RequestAuthenticationList"
     }
   },
   "additionalProperties": false

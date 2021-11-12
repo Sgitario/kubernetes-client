@@ -21,10 +21,14 @@ import (
 	"github.com/gogo/protobuf/types"
 
 	"github.com/fabric8io/kubernetes-client/generator/pkg/schemagen"
+
 	// Internal APIs:
 	api_networking_v1beta1 "istio.io/api/networking/v1beta1"
+	api_security_v1beta1 "istio.io/api/security/v1beta1"
+
 	// External APIs:
 	client_networking_v1beta1 "istio.io/client-go/pkg/apis/networking/v1beta1"
+	client_security_v1beta1 "istio.io/client-go/pkg/apis/security/v1beta1"
 
 	"reflect"
 )
@@ -34,6 +38,8 @@ func main() {
 	// the CRD List types for which the model should be generated
 	// no other types need to be defined as they are auto discovered
 	crdLists := map[reflect.Type]schemagen.CrdScope{
+		// common
+
 		// networking
 		reflect.TypeOf(client_networking_v1beta1.DestinationRuleList{}): schemagen.Namespaced,
 		reflect.TypeOf(client_networking_v1beta1.GatewayList{}):         schemagen.Namespaced,
@@ -41,6 +47,11 @@ func main() {
 		reflect.TypeOf(client_networking_v1beta1.SidecarList{}):         schemagen.Namespaced,
 		reflect.TypeOf(client_networking_v1beta1.VirtualServiceList{}):  schemagen.Namespaced,
 		reflect.TypeOf(client_networking_v1beta1.WorkloadEntryList{}):   schemagen.Namespaced,
+
+		// security
+		reflect.TypeOf(client_security_v1beta1.PeerAuthenticationList{}):    schemagen.Namespaced,
+		reflect.TypeOf(client_security_v1beta1.RequestAuthenticationList{}): schemagen.Namespaced,
+		reflect.TypeOf(client_security_v1beta1.AuthorizationPolicyList{}):   schemagen.Namespaced,
 	}
 
 	// constraints and patterns for fields
@@ -56,6 +67,7 @@ func main() {
 		{GoType: reflect.TypeOf(api_networking_v1beta1.LocalityLoadBalancerSetting{}), JavaClass: "io.fabric8.istio.internal.api.networking.v1beta1.LocalityLoadBalancerSetting"},
 		{GoType: reflect.TypeOf(api_networking_v1beta1.LocalityLoadBalancerSetting_Distribute{}), JavaClass: "io.fabric8.istio.internal.api.networking.v1beta1.Distribute"},
 		{GoType: reflect.TypeOf(api_networking_v1beta1.LocalityLoadBalancerSetting_Failover{}), JavaClass: "io.fabric8.istio.internal.api.networking.v1beta1.Failover"},
+		{GoType: reflect.TypeOf(api_security_v1beta1.AuthorizationPolicy{}), JavaClass: "io.fabric8.istio.internal.api.security.v1beta1.AuthorizationPolicySpec"},
 		// Due to issue in sundrio that generates duplicated methods named `hasMatchingAllowOrigin`
 		{GoType: reflect.TypeOf(api_networking_v1beta1.CorsPolicy{}), JavaClass: "io.fabric8.istio.internal.api.networking.v1beta1.CorsPolicy"},
 	}
@@ -69,6 +81,7 @@ func main() {
 	// optional ApiGroup and ApiVersion for the go package (which is added to the generated java class)
 	packageMapping := map[string]schemagen.PackageInformation{
 		"istio.io/client-go/pkg/apis/networking/v1beta1": {JavaPackage: "io.fabric8.istio.api.networking.v1beta1", ApiGroup: "networking.istio.io", ApiVersion: "v1beta1"},
+		"istio.io/client-go/pkg/apis/security/v1beta1":   {JavaPackage: "io.fabric8.istio.api.security.v1beta1", ApiGroup: "security.istio.io", ApiVersion: "v1beta1"},
 	}
 
 	// converts all packages starting with <key> to a java package using an automated scheme:

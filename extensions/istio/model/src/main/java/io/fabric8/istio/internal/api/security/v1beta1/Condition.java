@@ -1,0 +1,117 @@
+package io.fabric8.istio.internal.api.security.v1beta1;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyDescription;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import io.fabric8.kubernetes.api.model.ObjectMeta;
+import io.sundr.builder.annotations.Buildable;
+import io.sundr.builder.annotations.BuildableReference;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
+@JsonPropertyOrder({
+  "apiVersion",
+  "kind",
+  "metadata",
+  "key",
+  "notValues",
+  "values"
+})
+@ToString
+@EqualsAndHashCode
+@Buildable(editableEnabled = false, validationEnabled = false, generateBuilderPackage = false, builderPackage = "io.fabric8.kubernetes.api.builder", refs = {
+  @BuildableReference(ObjectMeta.class)
+})
+public class Condition implements Serializable {
+
+  private final static long serialVersionUID = 4253070762470001187L;
+
+  /**
+   *
+   */
+  @JsonProperty("key")
+  @JsonPropertyDescription("")
+  private String key;
+  /**
+   *
+   */
+  @JsonProperty("notValues")
+  @JsonPropertyDescription("")
+  private List<String> notValues = new ArrayList<String>();
+  /**
+   *
+   */
+  @JsonProperty("values")
+  @JsonPropertyDescription("")
+  private List<String> values = new ArrayList<String>();
+
+  /**
+   * No args constructor for use in serialization
+   *
+   */
+  public Condition() {
+  }
+
+  /**
+   *
+   * @param notValues
+   * @param values
+   * @param key
+   */
+  public Condition(String key, List<String> notValues, List<String> values) {
+    super();
+    this.key = key;
+    this.notValues = notValues;
+    this.values = values;
+  }
+
+  /**
+   *
+   */
+  public String getKey() {
+    return key;
+  }
+
+  /**
+   *
+   */
+  public void setKey(String key) {
+    this.key = key;
+  }
+
+  /**
+   *
+   */
+  public List<String> getNotValues() {
+    return notValues;
+  }
+
+  /**
+   *
+   */
+  public void setNotValues(List<String> notValues) {
+    this.notValues = notValues;
+  }
+
+  /**
+   *
+   */
+  public List<String> getValues() {
+    return values;
+  }
+
+  /**
+   *
+   */
+  public void setValues(List<String> values) {
+    this.values = values;
+  }
+
+}
