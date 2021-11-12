@@ -15,6 +15,8 @@
  */
 package io.fabric8.istio.client;
 
+import io.fabric8.istio.api.networking.v1beta1.DestinationRule;
+import io.fabric8.istio.api.networking.v1beta1.DestinationRuleList;
 import io.fabric8.istio.api.networking.v1beta1.VirtualService;
 import io.fabric8.istio.api.networking.v1beta1.VirtualServiceList;
 import io.fabric8.kubernetes.client.Client;
@@ -27,4 +29,6 @@ import io.fabric8.kubernetes.client.dsl.Resource;
 public interface IstioClient extends Client {
   // networking
   MixedOperation<VirtualService, VirtualServiceList, Resource<VirtualService>> virtualServices();
+
+  MixedOperation<DestinationRule, DestinationRuleList, Resource<DestinationRule>> destinationRules();
 }

@@ -84,17 +84,17 @@ class VirtualServiceTest {
 
     RecordedRequest recordedRequest = server.takeRequest();
     assertEquals("{\"apiVersion\":\"networking.istio.io/v1beta1\","
-      + "\"kind\":\"VirtualService\","
-      + "\"metadata\":{\"name\":\"reviews-route\"},"
-      + "\"spec\":{"
-      +   "\"hosts\":[\"reviews-v2-routes\"],"
-      +   "\"http\":[{"
-      +     "\"match\":["
-      +       "{\"uri\":{\"prefix\":\"/wpcatalog\"}},"
-      +       "{\"uri\":{\"prefix\":\"/consumercatalog\"}}],"
-      +     "\"name\":\"reviews-v2-routes\","
-      +     "\"rewrite\":{\"uri\":\"/newcatalog\"},"
-      +     "\"route\":[{\"destination\":{\"host\":\"reviews.prod.svc.cluster.local\",\"subset\":\"v2\"}}]}]}}",
+        + "\"kind\":\"VirtualService\","
+        + "\"metadata\":{\"name\":\"reviews-route\"},"
+        + "\"spec\":{"
+        +   "\"hosts\":[\"reviews-v2-routes\"],"
+        +   "\"http\":[{"
+        +     "\"match\":["
+        +       "{\"uri\":{\"prefix\":\"/wpcatalog\"}},"
+        +       "{\"uri\":{\"prefix\":\"/consumercatalog\"}}],"
+        +     "\"name\":\"reviews-v2-routes\","
+        +     "\"rewrite\":{\"uri\":\"/newcatalog\"},"
+        +     "\"route\":[{\"destination\":{\"host\":\"reviews.prod.svc.cluster.local\",\"subset\":\"v2\"}}]}]}}",
       recordedRequest.getBody().readUtf8());
   }
 

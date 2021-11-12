@@ -34,7 +34,9 @@ func main() {
 	// the CRD List types for which the model should be generated
 	// no other types need to be defined as they are auto discovered
 	crdLists := map[reflect.Type]schemagen.CrdScope{
-		reflect.TypeOf(client_networking_v1beta1.VirtualServiceList{}): schemagen.Namespaced,
+		// networking
+		reflect.TypeOf(client_networking_v1beta1.VirtualServiceList{}):  schemagen.Namespaced,
+		reflect.TypeOf(client_networking_v1beta1.DestinationRuleList{}): schemagen.Namespaced,
 	}
 
 	// constraints and patterns for fields
@@ -46,6 +48,10 @@ func main() {
 		{GoType: reflect.TypeOf(api_networking_v1beta1.StringMatch{}), JavaClass: "io.fabric8.istio.internal.api.networking.v1beta1.StringMatch"},
 		{GoType: reflect.TypeOf(api_networking_v1beta1.HTTPFaultInjection_Delay{}), JavaClass: "io.fabric8.istio.internal.api.networking.v1beta1.Delay"},
 		{GoType: reflect.TypeOf(api_networking_v1beta1.HTTPFaultInjection_Abort{}), JavaClass: "io.fabric8.istio.internal.api.networking.v1beta1.Abort"},
+		{GoType: reflect.TypeOf(api_networking_v1beta1.LoadBalancerSettings{}), JavaClass: "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings"},
+		{GoType: reflect.TypeOf(api_networking_v1beta1.LocalityLoadBalancerSetting{}), JavaClass: "io.fabric8.istio.internal.api.networking.v1beta1.LocalityLoadBalancerSetting"},
+		{GoType: reflect.TypeOf(api_networking_v1beta1.LocalityLoadBalancerSetting_Distribute{}), JavaClass: "io.fabric8.istio.internal.api.networking.v1beta1.Distribute"},
+		{GoType: reflect.TypeOf(api_networking_v1beta1.LocalityLoadBalancerSetting_Failover{}), JavaClass: "io.fabric8.istio.internal.api.networking.v1beta1.Failover"},
 		// Due to issue in sundrio that generates duplicated methods named `hasMatchingAllowOrigin`
 		{GoType: reflect.TypeOf(api_networking_v1beta1.CorsPolicy{}), JavaClass: "io.fabric8.istio.internal.api.networking.v1beta1.CorsPolicy"},
 	}
