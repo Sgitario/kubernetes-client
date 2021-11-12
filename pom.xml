@@ -430,6 +430,21 @@
         <artifactId>camel-k-server-mock</artifactId>
         <version>${project.version}</version>
       </dependency>
+      <dependency>
+        <groupId>io.fabric8</groupId>
+        <artifactId>istio-model</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.fabric8</groupId>
+        <artifactId>istio-client</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.fabric8</groupId>
+        <artifactId>istio-server-mock</artifactId>
+        <version>${project.version}</version>
+      </dependency>
 
       <!-- Jackson dependencies, imported as a BOM -->
       <dependency>
