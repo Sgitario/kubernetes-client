@@ -2,6 +2,8 @@ package io.fabric8.istio.client;
 
 import io.fabric8.istio.api.networking.v1beta1.DestinationRule;
 import io.fabric8.istio.api.networking.v1beta1.DestinationRuleList;
+import io.fabric8.istio.api.networking.v1beta1.Gateway;
+import io.fabric8.istio.api.networking.v1beta1.GatewayList;
 import io.fabric8.istio.api.networking.v1beta1.VirtualService;
 import io.fabric8.istio.api.networking.v1beta1.VirtualServiceList;
 import io.fabric8.kubernetes.client.BaseClient;
@@ -49,12 +51,17 @@ public class DefaultIstioClient extends BaseClient implements NamespacedIstioCli
   }
 
   @Override
-  public MixedOperation<VirtualService, VirtualServiceList, Resource<VirtualService>> virtualServices() {
-    return Handlers.getOperation(VirtualService.class, VirtualServiceList.class, this.getHttpClient(), this.getConfiguration());
+  public MixedOperation<DestinationRule, DestinationRuleList, Resource<DestinationRule>> destinationRules() {
+    return Handlers.getOperation(DestinationRule.class, DestinationRuleList.class, this.getHttpClient(), this.getConfiguration());
   }
 
   @Override
-  public MixedOperation<DestinationRule, DestinationRuleList, Resource<DestinationRule>> destinationRules() {
-    return Handlers.getOperation(DestinationRule.class, DestinationRuleList.class, this.getHttpClient(), this.getConfiguration());
+  public MixedOperation<Gateway, GatewayList, Resource<Gateway>> gateways() {
+    return Handlers.getOperation(Gateway.class, GatewayList.class, this.getHttpClient(), this.getConfiguration());
+  }
+
+  @Override
+  public MixedOperation<VirtualService, VirtualServiceList, Resource<VirtualService>> virtualServices() {
+    return Handlers.getOperation(VirtualService.class, VirtualServiceList.class, this.getHttpClient(), this.getConfiguration());
   }
 }

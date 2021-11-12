@@ -35,8 +35,9 @@ func main() {
 	// no other types need to be defined as they are auto discovered
 	crdLists := map[reflect.Type]schemagen.CrdScope{
 		// networking
-		reflect.TypeOf(client_networking_v1beta1.VirtualServiceList{}):  schemagen.Namespaced,
 		reflect.TypeOf(client_networking_v1beta1.DestinationRuleList{}): schemagen.Namespaced,
+		reflect.TypeOf(client_networking_v1beta1.GatewayList{}):         schemagen.Namespaced,
+		reflect.TypeOf(client_networking_v1beta1.VirtualServiceList{}):  schemagen.Namespaced,
 	}
 
 	// constraints and patterns for fields
