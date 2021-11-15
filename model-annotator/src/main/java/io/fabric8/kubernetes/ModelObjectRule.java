@@ -31,7 +31,7 @@ import com.sun.codemodel.JType;
  * Class that extend the object rule to add support of interfaces.
  */
 public class ModelObjectRule extends ObjectRule {
-
+  
   public static final String INTERFACE_TYPE_PROPERTY = "interfaceType";
 
   private final RuleFactory ruleFactory;
