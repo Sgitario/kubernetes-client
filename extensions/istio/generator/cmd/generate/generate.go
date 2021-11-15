@@ -107,6 +107,7 @@ func main() {
 		"istio.io/api/networking/v1beta1/isHTTPFaultInjection_Delay_HttpDelayType":        {reflect.TypeOf(api_networking_v1beta1.HTTPFaultInjection_Delay_ExponentialDelay{}), reflect.TypeOf(api_networking_v1beta1.HTTPFaultInjection_Delay_FixedDelay{})},
 		"istio.io/api/networking/v1beta1/isLoadBalancerSettings_LbPolicy":                 {reflect.TypeOf(api_networking_v1beta1.LoadBalancerSettings_ConsistentHash{}), reflect.TypeOf(api_networking_v1beta1.LoadBalancerSettings_Simple{})},
 		"istio.io/api/networking/v1beta1/isLoadBalancerSettings_ConsistentHashLB_HashKey": {reflect.TypeOf(api_networking_v1beta1.LoadBalancerSettings_ConsistentHashLB_HttpHeaderName{}), reflect.TypeOf(api_networking_v1beta1.LoadBalancerSettings_ConsistentHashLB_HttpCookie{}), reflect.TypeOf(api_networking_v1beta1.LoadBalancerSettings_ConsistentHashLB_UseSourceIp{}), reflect.TypeOf(api_networking_v1beta1.LoadBalancerSettings_ConsistentHashLB_HttpQueryParameterName{})},
+		"istio.io/api/networking/v1beta1/isHTTPRedirect_RedirectPort":                     {reflect.TypeOf(api_networking_v1beta1.HTTPRedirect_Port{}), reflect.TypeOf(api_networking_v1beta1.HTTPRedirect_DerivePort{})},
 
 		// security
 		"istio.io/api/security/v1beta1/isAuthorizationPolicy_ActionDetail": {reflect.TypeOf(api_security_v1beta1.AuthorizationPolicy_Provider{})},

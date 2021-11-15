@@ -104,6 +104,9 @@
         "credential_name": {
           "type": "string"
         },
+        "insecure_skip_verify": {
+          "existingJavaType": "java.lang.Boolean"
+        },
         "mode": {
           "type": "integer"
         },
@@ -473,11 +476,18 @@
     "istio_io_api_networking_v1beta1_HTTPRedirect": {
       "type": "object",
       "properties": {
+        "RedirectPort": {
+          "$ref": "#/definitions/istio_io_api_networking_v1beta1_isHTTPRedirect_RedirectPort",
+          "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPRedirect_RedirectPort"
+        },
         "authority": {
           "type": "string"
         },
         "redirect_code": {
           "type": "integer"
+        },
+        "scheme": {
+          "type": "string"
         },
         "uri": {
           "type": "string"
@@ -486,6 +496,30 @@
       "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPRedirect",
       "javaInterfaces": [
         "io.fabric8.kubernetes.api.model.KubernetesResource"
+      ]
+    },
+    "istio_io_api_networking_v1beta1_HTTPRedirect_DerivePort": {
+      "type": "object",
+      "properties": {
+        "derive_port": {
+          "type": "integer"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPRedirect_DerivePort",
+      "javaInterfaces": [
+        "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPRedirect_RedirectPort"
+      ]
+    },
+    "istio_io_api_networking_v1beta1_HTTPRedirect_Port": {
+      "type": "object",
+      "properties": {
+        "port": {
+          "type": "integer"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPRedirect_Port",
+      "javaInterfaces": [
+        "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPRedirect_RedirectPort"
       ]
     },
     "istio_io_api_networking_v1beta1_HTTPRetry": {
@@ -883,6 +917,13 @@
           "items": {
             "$ref": "#/definitions/istio_io_api_networking_v1beta1_LocalityLoadBalancerSetting_Failover",
             "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.LocalityLoadBalancerSetting_Failover"
+          }
+        },
+        "failover_priority": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "type": "string"
           }
         }
       },
@@ -1553,6 +1594,10 @@
       "type": "object",
       "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPFaultInjection_Delay_HttpDelayType"
     },
+    "istio_io_api_networking_v1beta1_isHTTPRedirect_RedirectPort": {
+      "type": "object",
+      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPRedirect_RedirectPort"
+    },
     "istio_io_api_networking_v1beta1_isLoadBalancerSettings_ConsistentHashLB_HashKey": {
       "type": "object",
       "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isLoadBalancerSettings_ConsistentHashLB_HashKey"
@@ -2155,6 +2200,9 @@
         },
         "random_sampling_percentage": {
           "existingJavaType": "java.lang.Double"
+        },
+        "use_request_id_for_trace_sampling": {
+          "existingJavaType": "java.lang.Boolean"
         }
       },
       "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing",
@@ -2982,6 +3030,14 @@
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_HTTPRedirect",
       "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPRedirect"
     },
+    "istio_io_api_networking_v1beta1_HTTPRedirect_DerivePort": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_HTTPRedirect_DerivePort",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPRedirect_DerivePort"
+    },
+    "istio_io_api_networking_v1beta1_HTTPRedirect_Port": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_HTTPRedirect_Port",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPRedirect_Port"
+    },
     "istio_io_api_networking_v1beta1_HTTPRetry": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_HTTPRetry",
       "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPRetry"
@@ -3165,6 +3221,10 @@
     "istio_io_api_networking_v1beta1_isHTTPFaultInjection_Delay_HttpDelayType": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_isHTTPFaultInjection_Delay_HttpDelayType",
       "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPFaultInjection_Delay_HttpDelayType"
+    },
+    "istio_io_api_networking_v1beta1_isHTTPRedirect_RedirectPort": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_isHTTPRedirect_RedirectPort",
+      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPRedirect_RedirectPort"
     },
     "istio_io_api_networking_v1beta1_isLoadBalancerSettings_ConsistentHashLB_HashKey": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_isLoadBalancerSettings_ConsistentHashLB_HashKey",
