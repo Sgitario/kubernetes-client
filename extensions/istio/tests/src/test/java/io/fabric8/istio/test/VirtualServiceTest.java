@@ -15,6 +15,15 @@
  */
 package io.fabric8.istio.test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.net.HttpURLConnection;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
 import io.fabric8.istio.api.networking.v1beta1.VirtualService;
 import io.fabric8.istio.api.networking.v1beta1.VirtualServiceBuilder;
 import io.fabric8.istio.client.IstioClient;
@@ -24,17 +33,11 @@ import io.fabric8.istio.internal.api.networking.v1beta1.HTTPRewriteBuilder;
 import io.fabric8.istio.internal.api.networking.v1beta1.HTTPRouteBuilder;
 import io.fabric8.istio.internal.api.networking.v1beta1.HTTPRouteDestinationBuilder;
 import io.fabric8.istio.internal.api.networking.v1beta1.StringMatch;
-import io.fabric8.istio.internal.api.networking.v1beta1.StringMatchBuilder;
+import io.fabric8.istio.internal.api.networking.v1beta1.StringMatch_Prefix;
 import io.fabric8.istio.mock.EnableIstioMockClient;
 import io.fabric8.istio.mock.IstioMockServer;
 import io.fabric8.kubernetes.api.model.DeletionPropagation;
 import okhttp3.mockwebserver.RecordedRequest;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-import java.net.HttpURLConnection;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @EnableIstioMockClient
 class VirtualServiceTest {
@@ -67,10 +70,14 @@ class VirtualServiceTest {
       .withHosts("reviews-v2-routes")
       .withHttp(
         new HTTPRouteBuilder().withName("reviews-v2-routes")
-          .withMatch(new HTTPMatchRequestBuilder().withUri(new StringMatchBuilder().withPrefix("/wpcatalog").build()).build(),
-            new HTTPMatchRequestBuilder().withUri(StringMatch.prefix("/consumercatalog")).build())
+          .withMatch(
+            new HTTPMatchRequestBuilder().withUri(new StringMatch(new StringMatch_Prefix("/wpcatalog"))).build(),
+            new HTTPMatchRequestBuilder().withUri(new StringMatch(new StringMatch_Prefix("/consumercatalog"))).build()
+          )
           .withRewrite(new HTTPRewriteBuilder().withUri("/newcatalog").build())
-          .withRoute(new HTTPRouteDestinationBuilder().withDestination(new Destination("reviews.prod.svc.cluster.local", null, "v2")).build())
+          .withRoute(
+            new HTTPRouteDestinationBuilder().withDestination(new Destination("reviews.prod.svc.cluster.local", null, "v2"))
+              .build())
           .build()
       )
       .endInternalSpec()

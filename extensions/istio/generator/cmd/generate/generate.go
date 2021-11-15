@@ -57,23 +57,15 @@ func main() {
 		reflect.TypeOf(client_telemetry_v1alpha1.TelemetryList{}): schemagen.Namespaced,
 	}
 
+	// custom types descriptors
+	typesDescriptors := map[reflect.Type]*schemagen.JSONObjectDescriptor{}
+
 	// constraints and patterns for fields
 	constraints := map[reflect.Type]map[string]*schemagen.Constraint{}
 
 	// types that are manually defined in the model
 	providedTypes := []schemagen.ProvidedType{
-		// Interfaces can't be automatically generated:
-		{GoType: reflect.TypeOf(api_networking_v1beta1.StringMatch{}), JavaClass: "io.fabric8.istio.internal.api.networking.v1beta1.StringMatch"},
-		{GoType: reflect.TypeOf(api_networking_v1beta1.HTTPFaultInjection_Delay{}), JavaClass: "io.fabric8.istio.internal.api.networking.v1beta1.Delay"},
-		{GoType: reflect.TypeOf(api_networking_v1beta1.HTTPFaultInjection_Abort{}), JavaClass: "io.fabric8.istio.internal.api.networking.v1beta1.Abort"},
-		{GoType: reflect.TypeOf(api_networking_v1beta1.LoadBalancerSettings{}), JavaClass: "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings"},
-		{GoType: reflect.TypeOf(api_networking_v1beta1.LocalityLoadBalancerSetting{}), JavaClass: "io.fabric8.istio.internal.api.networking.v1beta1.LocalityLoadBalancerSetting"},
-		{GoType: reflect.TypeOf(api_networking_v1beta1.LocalityLoadBalancerSetting_Distribute{}), JavaClass: "io.fabric8.istio.internal.api.networking.v1beta1.Distribute"},
-		{GoType: reflect.TypeOf(api_networking_v1beta1.LocalityLoadBalancerSetting_Failover{}), JavaClass: "io.fabric8.istio.internal.api.networking.v1beta1.Failover"},
-		{GoType: reflect.TypeOf(api_security_v1beta1.AuthorizationPolicy{}), JavaClass: "io.fabric8.istio.internal.api.security.v1beta1.AuthorizationPolicySpec"},
-		{GoType: reflect.TypeOf(api_telemetry_v1alpha1.Tracing_CustomTag{}), JavaClass: "io.fabric8.istio.internal.api.telemetry.v1alpha1.CustomTag"},
-		{GoType: reflect.TypeOf(api_telemetry_v1alpha1.MetricSelector{}), JavaClass: "io.fabric8.istio.internal.api.telemetry.v1alpha1.MetricSelector"},
-		// Due to issue in sundrio that generates duplicated methods named `hasMatchingAllowOrigin`
+		// Due to issue in sundrio (https://github.com/sundrio/sundrio/issues/170). A duplicated methods is generated, both named `hasMatchingAllowOrigin`
 		{GoType: reflect.TypeOf(api_networking_v1beta1.CorsPolicy{}), JavaClass: "io.fabric8.istio.internal.api.networking.v1beta1.CorsPolicy"},
 	}
 
@@ -99,15 +91,32 @@ func main() {
 
 	// overwriting some times
 	manualTypeMap := map[reflect.Type]string{
-		// reflect.TypeOf(time.Time{}): "java.util.TimeZone",
 		reflect.TypeOf(types.BoolValue{}):   "java.lang.Boolean",
 		reflect.TypeOf(types.DoubleValue{}): "java.lang.Double",
 		reflect.TypeOf(types.Duration{}):    "java.time.Duration",
 		reflect.TypeOf(types.Timestamp{}):   "java.lang.Long",
+		reflect.TypeOf(types.Int32Value{}):  "java.lang.Integer",
 		reflect.TypeOf(types.UInt32Value{}): "java.lang.Integer",
 	}
 
-	json := schemagen.GenerateSchema("http://fabric8.io/istio/IstioSchema#", crdLists, providedPackages, manualTypeMap, packageMapping, mappingSchema, providedTypes, constraints, "io.fabric8")
+	// types for interfaces
+	interfacesMapping := map[string][]reflect.Type{
+		// networking
+		"istio.io/api/networking/v1beta1/isStringMatch_MatchType":                         {reflect.TypeOf(api_networking_v1beta1.StringMatch_Exact{}), reflect.TypeOf(api_networking_v1beta1.StringMatch_Regex{}), reflect.TypeOf(api_networking_v1beta1.StringMatch_Prefix{})},
+		"istio.io/api/networking/v1beta1/isHTTPFaultInjection_Abort_ErrorType":            {reflect.TypeOf(api_networking_v1beta1.HTTPFaultInjection_Abort_HttpStatus{}), reflect.TypeOf(api_networking_v1beta1.HTTPFaultInjection_Abort_GrpcStatus{}), reflect.TypeOf(api_networking_v1beta1.HTTPFaultInjection_Abort_Http2Error{})},
+		"istio.io/api/networking/v1beta1/isHTTPFaultInjection_Delay_HttpDelayType":        {reflect.TypeOf(api_networking_v1beta1.HTTPFaultInjection_Delay_ExponentialDelay{}), reflect.TypeOf(api_networking_v1beta1.HTTPFaultInjection_Delay_FixedDelay{})},
+		"istio.io/api/networking/v1beta1/isLoadBalancerSettings_LbPolicy":                 {reflect.TypeOf(api_networking_v1beta1.LoadBalancerSettings_ConsistentHash{}), reflect.TypeOf(api_networking_v1beta1.LoadBalancerSettings_Simple{})},
+		"istio.io/api/networking/v1beta1/isLoadBalancerSettings_ConsistentHashLB_HashKey": {reflect.TypeOf(api_networking_v1beta1.LoadBalancerSettings_ConsistentHashLB_HttpHeaderName{}), reflect.TypeOf(api_networking_v1beta1.LoadBalancerSettings_ConsistentHashLB_HttpCookie{}), reflect.TypeOf(api_networking_v1beta1.LoadBalancerSettings_ConsistentHashLB_UseSourceIp{}), reflect.TypeOf(api_networking_v1beta1.LoadBalancerSettings_ConsistentHashLB_HttpQueryParameterName{})},
+
+		// security
+		"istio.io/api/security/v1beta1/isAuthorizationPolicy_ActionDetail": {reflect.TypeOf(api_security_v1beta1.AuthorizationPolicy_Provider{})},
+
+		// telemetry
+		"istio.io/api/telemetry/v1alpha1/isMetricSelector_MetricMatch": {reflect.TypeOf(api_telemetry_v1alpha1.MetricSelector_Metric{}), reflect.TypeOf(api_telemetry_v1alpha1.MetricSelector_CustomMetric{})},
+		"istio.io/api/telemetry/v1alpha1/isTracing_CustomTag_Type":     {reflect.TypeOf(api_telemetry_v1alpha1.Tracing_CustomTag_Literal{}), reflect.TypeOf(api_telemetry_v1alpha1.Tracing_CustomTag_Environment{}), reflect.TypeOf(api_telemetry_v1alpha1.Tracing_CustomTag_Header{})},
+	}
+
+	json := schemagen.GenerateSchemaWithAllOptions("http://fabric8.io/istio/IstioSchema#", crdLists, typesDescriptors, providedPackages, manualTypeMap, packageMapping, mappingSchema, providedTypes, constraints, interfacesMapping, "io.fabric8")
 
 	fmt.Println(json)
 }

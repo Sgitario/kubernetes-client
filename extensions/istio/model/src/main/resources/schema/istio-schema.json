@@ -300,10 +300,12 @@
       "type": "object",
       "properties": {
         "abort": {
-          "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.Abort"
+          "$ref": "#/definitions/istio_io_api_networking_v1beta1_HTTPFaultInjection_Abort",
+          "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Abort"
         },
         "delay": {
-          "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.Delay"
+          "$ref": "#/definitions/istio_io_api_networking_v1beta1_HTTPFaultInjection_Delay",
+          "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Delay"
         }
       },
       "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection",
@@ -311,10 +313,108 @@
         "io.fabric8.kubernetes.api.model.KubernetesResource"
       ]
     },
+    "istio_io_api_networking_v1beta1_HTTPFaultInjection_Abort": {
+      "type": "object",
+      "properties": {
+        "ErrorType": {
+          "$ref": "#/definitions/istio_io_api_networking_v1beta1_isHTTPFaultInjection_Abort_ErrorType",
+          "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPFaultInjection_Abort_ErrorType"
+        },
+        "percentage": {
+          "$ref": "#/definitions/istio_io_api_networking_v1beta1_Percent",
+          "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.Percent"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Abort",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource"
+      ]
+    },
+    "istio_io_api_networking_v1beta1_HTTPFaultInjection_Abort_GrpcStatus": {
+      "type": "object",
+      "properties": {
+        "grpc_status": {
+          "type": "string"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Abort_GrpcStatus",
+      "javaInterfaces": [
+        "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPFaultInjection_Abort_ErrorType"
+      ]
+    },
+    "istio_io_api_networking_v1beta1_HTTPFaultInjection_Abort_Http2Error": {
+      "type": "object",
+      "properties": {
+        "http2_error": {
+          "type": "string"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Abort_Http2Error",
+      "javaInterfaces": [
+        "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPFaultInjection_Abort_ErrorType"
+      ]
+    },
+    "istio_io_api_networking_v1beta1_HTTPFaultInjection_Abort_HttpStatus": {
+      "type": "object",
+      "properties": {
+        "http_status": {
+          "type": "integer"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Abort_HttpStatus",
+      "javaInterfaces": [
+        "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPFaultInjection_Abort_ErrorType"
+      ]
+    },
+    "istio_io_api_networking_v1beta1_HTTPFaultInjection_Delay": {
+      "type": "object",
+      "properties": {
+        "HttpDelayType": {
+          "$ref": "#/definitions/istio_io_api_networking_v1beta1_isHTTPFaultInjection_Delay_HttpDelayType",
+          "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPFaultInjection_Delay_HttpDelayType"
+        },
+        "percent": {
+          "type": "integer"
+        },
+        "percentage": {
+          "$ref": "#/definitions/istio_io_api_networking_v1beta1_Percent",
+          "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.Percent"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Delay",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource"
+      ]
+    },
+    "istio_io_api_networking_v1beta1_HTTPFaultInjection_Delay_ExponentialDelay": {
+      "type": "object",
+      "properties": {
+        "exponential_delay": {
+          "existingJavaType": "java.time.Duration"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Delay_ExponentialDelay",
+      "javaInterfaces": [
+        "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPFaultInjection_Delay_HttpDelayType"
+      ]
+    },
+    "istio_io_api_networking_v1beta1_HTTPFaultInjection_Delay_FixedDelay": {
+      "type": "object",
+      "properties": {
+        "fixed_delay": {
+          "existingJavaType": "java.time.Duration"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Delay_FixedDelay",
+      "javaInterfaces": [
+        "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPFaultInjection_Delay_HttpDelayType"
+      ]
+    },
     "istio_io_api_networking_v1beta1_HTTPMatchRequest": {
       "type": "object",
       "properties": {
         "authority": {
+          "$ref": "#/definitions/istio_io_api_networking_v1beta1_StringMatch",
           "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.StringMatch"
         },
         "gateways": {
@@ -332,6 +432,7 @@
           "type": "boolean"
         },
         "method": {
+          "$ref": "#/definitions/istio_io_api_networking_v1beta1_StringMatch",
           "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.StringMatch"
         },
         "name": {
@@ -345,6 +446,7 @@
           "existingJavaType": "java.util.Map\u003cString,io.fabric8.istio.internal.api.networking.v1beta1.StringMatch\u003e"
         },
         "scheme": {
+          "$ref": "#/definitions/istio_io_api_networking_v1beta1_StringMatch",
           "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.StringMatch"
         },
         "source_labels": {
@@ -355,6 +457,7 @@
           "type": "string"
         },
         "uri": {
+          "$ref": "#/definitions/istio_io_api_networking_v1beta1_StringMatch",
           "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.StringMatch"
         },
         "without_headers": {
@@ -631,6 +734,190 @@
         }
       },
       "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.L4MatchAttributes",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource"
+      ]
+    },
+    "istio_io_api_networking_v1beta1_LoadBalancerSettings": {
+      "type": "object",
+      "properties": {
+        "LbPolicy": {
+          "$ref": "#/definitions/istio_io_api_networking_v1beta1_isLoadBalancerSettings_LbPolicy",
+          "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isLoadBalancerSettings_LbPolicy"
+        },
+        "locality_lb_setting": {
+          "$ref": "#/definitions/istio_io_api_networking_v1beta1_LocalityLoadBalancerSetting",
+          "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.LocalityLoadBalancerSetting"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource"
+      ]
+    },
+    "istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHash": {
+      "type": "object",
+      "properties": {
+        "consistent_hash": {
+          "$ref": "#/definitions/istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB",
+          "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLB"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHash",
+      "javaInterfaces": [
+        "io.fabric8.istio.internal.api.networking.v1beta1.isLoadBalancerSettings_LbPolicy"
+      ]
+    },
+    "istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB": {
+      "type": "object",
+      "properties": {
+        "HashKey": {
+          "$ref": "#/definitions/istio_io_api_networking_v1beta1_isLoadBalancerSettings_ConsistentHashLB_HashKey",
+          "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isLoadBalancerSettings_ConsistentHashLB_HashKey"
+        },
+        "minimum_ring_size": {
+          "type": "integer"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLB",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource"
+      ]
+    },
+    "istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB_HTTPCookie": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "ttl": {
+          "existingJavaType": "java.time.Duration"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLB_HTTPCookie",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource"
+      ]
+    },
+    "istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB_HttpCookie": {
+      "type": "object",
+      "properties": {
+        "http_cookie": {
+          "$ref": "#/definitions/istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB_HTTPCookie",
+          "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLB_HTTPCookie"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLB_HttpCookie",
+      "javaInterfaces": [
+        "io.fabric8.istio.internal.api.networking.v1beta1.isLoadBalancerSettings_ConsistentHashLB_HashKey"
+      ]
+    },
+    "istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB_HttpHeaderName": {
+      "type": "object",
+      "properties": {
+        "http_header_name": {
+          "type": "string"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLB_HttpHeaderName",
+      "javaInterfaces": [
+        "io.fabric8.istio.internal.api.networking.v1beta1.isLoadBalancerSettings_ConsistentHashLB_HashKey"
+      ]
+    },
+    "istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB_HttpQueryParameterName": {
+      "type": "object",
+      "properties": {
+        "http_query_parameter_name": {
+          "type": "string"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLB_HttpQueryParameterName",
+      "javaInterfaces": [
+        "io.fabric8.istio.internal.api.networking.v1beta1.isLoadBalancerSettings_ConsistentHashLB_HashKey"
+      ]
+    },
+    "istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB_UseSourceIp": {
+      "type": "object",
+      "properties": {
+        "use_source_ip": {
+          "type": "boolean"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLB_UseSourceIp",
+      "javaInterfaces": [
+        "io.fabric8.istio.internal.api.networking.v1beta1.isLoadBalancerSettings_ConsistentHashLB_HashKey"
+      ]
+    },
+    "istio_io_api_networking_v1beta1_LoadBalancerSettings_Simple": {
+      "type": "object",
+      "properties": {
+        "simple": {
+          "type": "integer"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_Simple",
+      "javaInterfaces": [
+        "io.fabric8.istio.internal.api.networking.v1beta1.isLoadBalancerSettings_LbPolicy"
+      ]
+    },
+    "istio_io_api_networking_v1beta1_LocalityLoadBalancerSetting": {
+      "type": "object",
+      "properties": {
+        "distribute": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "$ref": "#/definitions/istio_io_api_networking_v1beta1_LocalityLoadBalancerSetting_Distribute",
+            "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.LocalityLoadBalancerSetting_Distribute"
+          }
+        },
+        "enabled": {
+          "existingJavaType": "java.lang.Boolean"
+        },
+        "failover": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "$ref": "#/definitions/istio_io_api_networking_v1beta1_LocalityLoadBalancerSetting_Failover",
+            "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.LocalityLoadBalancerSetting_Failover"
+          }
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LocalityLoadBalancerSetting",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource"
+      ]
+    },
+    "istio_io_api_networking_v1beta1_LocalityLoadBalancerSetting_Distribute": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "object",
+          "existingJavaType": "java.util.Map\u003cString,Long\u003e"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LocalityLoadBalancerSetting_Distribute",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource"
+      ]
+    },
+    "istio_io_api_networking_v1beta1_LocalityLoadBalancerSetting_Failover": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LocalityLoadBalancerSetting_Failover",
       "javaInterfaces": [
         "io.fabric8.kubernetes.api.model.KubernetesResource"
       ]
@@ -938,6 +1225,55 @@
         "io.fabric8.kubernetes.api.model.KubernetesResource"
       ]
     },
+    "istio_io_api_networking_v1beta1_StringMatch": {
+      "type": "object",
+      "properties": {
+        "MatchType": {
+          "$ref": "#/definitions/istio_io_api_networking_v1beta1_isStringMatch_MatchType",
+          "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isStringMatch_MatchType"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.StringMatch",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource"
+      ]
+    },
+    "istio_io_api_networking_v1beta1_StringMatch_Exact": {
+      "type": "object",
+      "properties": {
+        "exact": {
+          "type": "string"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.StringMatch_Exact",
+      "javaInterfaces": [
+        "io.fabric8.istio.internal.api.networking.v1beta1.isStringMatch_MatchType"
+      ]
+    },
+    "istio_io_api_networking_v1beta1_StringMatch_Prefix": {
+      "type": "object",
+      "properties": {
+        "prefix": {
+          "type": "string"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.StringMatch_Prefix",
+      "javaInterfaces": [
+        "io.fabric8.istio.internal.api.networking.v1beta1.isStringMatch_MatchType"
+      ]
+    },
+    "istio_io_api_networking_v1beta1_StringMatch_Regex": {
+      "type": "object",
+      "properties": {
+        "regex": {
+          "type": "string"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.StringMatch_Regex",
+      "javaInterfaces": [
+        "io.fabric8.istio.internal.api.networking.v1beta1.isStringMatch_MatchType"
+      ]
+    },
     "istio_io_api_networking_v1beta1_Subset": {
       "type": "object",
       "properties": {
@@ -1056,6 +1392,7 @@
           "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.ConnectionPoolSettings"
         },
         "load_balancer": {
+          "$ref": "#/definitions/istio_io_api_networking_v1beta1_LoadBalancerSettings",
           "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings"
         },
         "outlier_detection": {
@@ -1088,6 +1425,7 @@
           "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.ConnectionPoolSettings"
         },
         "load_balancer": {
+          "$ref": "#/definitions/istio_io_api_networking_v1beta1_LoadBalancerSettings",
           "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings"
         },
         "outlier_detection": {
@@ -1207,6 +1545,105 @@
         "io.fabric8.kubernetes.api.model.KubernetesResource"
       ]
     },
+    "istio_io_api_networking_v1beta1_isHTTPFaultInjection_Abort_ErrorType": {
+      "type": "object",
+      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPFaultInjection_Abort_ErrorType"
+    },
+    "istio_io_api_networking_v1beta1_isHTTPFaultInjection_Delay_HttpDelayType": {
+      "type": "object",
+      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPFaultInjection_Delay_HttpDelayType"
+    },
+    "istio_io_api_networking_v1beta1_isLoadBalancerSettings_ConsistentHashLB_HashKey": {
+      "type": "object",
+      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isLoadBalancerSettings_ConsistentHashLB_HashKey"
+    },
+    "istio_io_api_networking_v1beta1_isLoadBalancerSettings_LbPolicy": {
+      "type": "object",
+      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isLoadBalancerSettings_LbPolicy"
+    },
+    "istio_io_api_networking_v1beta1_isStringMatch_MatchType": {
+      "type": "object",
+      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isStringMatch_MatchType"
+    },
+    "istio_io_api_security_v1beta1_AuthorizationPolicy": {
+      "type": "object",
+      "properties": {
+        "ActionDetail": {
+          "$ref": "#/definitions/istio_io_api_security_v1beta1_isAuthorizationPolicy_ActionDetail",
+          "interfaceType": "io.fabric8.istio.internal.api.security.v1beta1.isAuthorizationPolicy_ActionDetail"
+        },
+        "action": {
+          "type": "integer"
+        },
+        "rules": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "$ref": "#/definitions/istio_io_api_security_v1beta1_Rule",
+            "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.Rule"
+          }
+        },
+        "selector": {
+          "$ref": "#/definitions/istio_io_api_type_v1beta1_WorkloadSelector",
+          "existingJavaType": "io.fabric8.istio.internal.api.type.v1beta1.WorkloadSelector"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.security.v1beta1.AuthorizationPolicy",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource"
+      ]
+    },
+    "istio_io_api_security_v1beta1_AuthorizationPolicy_ExtensionProvider": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.security.v1beta1.AuthorizationPolicy_ExtensionProvider",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource"
+      ]
+    },
+    "istio_io_api_security_v1beta1_AuthorizationPolicy_Provider": {
+      "type": "object",
+      "properties": {
+        "provider": {
+          "$ref": "#/definitions/istio_io_api_security_v1beta1_AuthorizationPolicy_ExtensionProvider",
+          "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.AuthorizationPolicy_ExtensionProvider"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.security.v1beta1.AuthorizationPolicy_Provider",
+      "javaInterfaces": [
+        "io.fabric8.istio.internal.api.security.v1beta1.isAuthorizationPolicy_ActionDetail"
+      ]
+    },
+    "istio_io_api_security_v1beta1_Condition": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "not_values": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "values": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.security.v1beta1.Condition",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource"
+      ]
+    },
     "istio_io_api_security_v1beta1_JWTHeader": {
       "type": "object",
       "properties": {
@@ -1268,6 +1705,71 @@
         "io.fabric8.kubernetes.api.model.KubernetesResource"
       ]
     },
+    "istio_io_api_security_v1beta1_Operation": {
+      "type": "object",
+      "properties": {
+        "hosts": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "methods": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "not_hosts": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "not_methods": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "not_paths": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "not_ports": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "paths": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "ports": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.security.v1beta1.Operation",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource"
+      ]
+    },
     "istio_io_api_security_v1beta1_PeerAuthentication": {
       "type": "object",
       "properties": {
@@ -1322,6 +1824,148 @@
         "io.fabric8.kubernetes.api.model.KubernetesResource"
       ]
     },
+    "istio_io_api_security_v1beta1_Rule": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "$ref": "#/definitions/istio_io_api_security_v1beta1_Rule_From",
+            "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.Rule_From"
+          }
+        },
+        "to": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "$ref": "#/definitions/istio_io_api_security_v1beta1_Rule_To",
+            "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.Rule_To"
+          }
+        },
+        "when": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "$ref": "#/definitions/istio_io_api_security_v1beta1_Condition",
+            "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.Condition"
+          }
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.security.v1beta1.Rule",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource"
+      ]
+    },
+    "istio_io_api_security_v1beta1_Rule_From": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "$ref": "#/definitions/istio_io_api_security_v1beta1_Source",
+          "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.Source"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.security.v1beta1.Rule_From",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource"
+      ]
+    },
+    "istio_io_api_security_v1beta1_Rule_To": {
+      "type": "object",
+      "properties": {
+        "operation": {
+          "$ref": "#/definitions/istio_io_api_security_v1beta1_Operation",
+          "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.Operation"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.security.v1beta1.Rule_To",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource"
+      ]
+    },
+    "istio_io_api_security_v1beta1_Source": {
+      "type": "object",
+      "properties": {
+        "ip_blocks": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "namespaces": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "not_ip_blocks": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "not_namespaces": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "not_principals": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "not_remote_ip_blocks": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "not_request_principals": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "principals": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "remote_ip_blocks": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "request_principals": {
+          "type": "array",
+          "javaOmitEmpty": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.security.v1beta1.Source",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource"
+      ]
+    },
+    "istio_io_api_security_v1beta1_isAuthorizationPolicy_ActionDetail": {
+      "type": "object",
+      "interfaceType": "io.fabric8.istio.internal.api.security.v1beta1.isAuthorizationPolicy_ActionDetail"
+    },
     "istio_io_api_telemetry_v1alpha1_AccessLogging": {
       "type": "object",
       "properties": {
@@ -1340,6 +1984,46 @@
       "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.AccessLogging",
       "javaInterfaces": [
         "io.fabric8.kubernetes.api.model.KubernetesResource"
+      ]
+    },
+    "istio_io_api_telemetry_v1alpha1_MetricSelector": {
+      "type": "object",
+      "properties": {
+        "MetricMatch": {
+          "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_isMetricSelector_MetricMatch",
+          "interfaceType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.isMetricSelector_MetricMatch"
+        },
+        "mode": {
+          "type": "integer"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.MetricSelector",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource"
+      ]
+    },
+    "istio_io_api_telemetry_v1alpha1_MetricSelector_CustomMetric": {
+      "type": "object",
+      "properties": {
+        "custom_metric": {
+          "type": "string"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.MetricSelector_CustomMetric",
+      "javaInterfaces": [
+        "io.fabric8.istio.internal.api.telemetry.v1alpha1.isMetricSelector_MetricMatch"
+      ]
+    },
+    "istio_io_api_telemetry_v1alpha1_MetricSelector_Metric": {
+      "type": "object",
+      "properties": {
+        "metric": {
+          "type": "integer"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.MetricSelector_Metric",
+      "javaInterfaces": [
+        "io.fabric8.istio.internal.api.telemetry.v1alpha1.isMetricSelector_MetricMatch"
       ]
     },
     "istio_io_api_telemetry_v1alpha1_Metrics": {
@@ -1374,6 +2058,7 @@
           "existingJavaType": "java.lang.Boolean"
         },
         "match": {
+          "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_MetricSelector",
           "existingJavaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.MetricSelector"
         },
         "tag_overrides": {
@@ -1455,7 +2140,7 @@
       "properties": {
         "custom_tags": {
           "type": "object",
-          "existingJavaType": "java.util.Map\u003cString,io.fabric8.istio.internal.api.telemetry.v1alpha1.CustomTag\u003e"
+          "existingJavaType": "java.util.Map\u003cString,io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_CustomTag\u003e"
         },
         "disable_span_reporting": {
           "existingJavaType": "java.lang.Boolean"
@@ -1476,6 +2161,108 @@
       "javaInterfaces": [
         "io.fabric8.kubernetes.api.model.KubernetesResource"
       ]
+    },
+    "istio_io_api_telemetry_v1alpha1_Tracing_CustomTag": {
+      "type": "object",
+      "properties": {
+        "Type": {
+          "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_isTracing_CustomTag_Type",
+          "interfaceType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.isTracing_CustomTag_Type"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_CustomTag",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource"
+      ]
+    },
+    "istio_io_api_telemetry_v1alpha1_Tracing_CustomTag_Environment": {
+      "type": "object",
+      "properties": {
+        "environment": {
+          "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_Tracing_Environment",
+          "existingJavaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_Environment"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_CustomTag_Environment",
+      "javaInterfaces": [
+        "io.fabric8.istio.internal.api.telemetry.v1alpha1.isTracing_CustomTag_Type"
+      ]
+    },
+    "istio_io_api_telemetry_v1alpha1_Tracing_CustomTag_Header": {
+      "type": "object",
+      "properties": {
+        "header": {
+          "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_Tracing_RequestHeader",
+          "existingJavaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_RequestHeader"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_CustomTag_Header",
+      "javaInterfaces": [
+        "io.fabric8.istio.internal.api.telemetry.v1alpha1.isTracing_CustomTag_Type"
+      ]
+    },
+    "istio_io_api_telemetry_v1alpha1_Tracing_CustomTag_Literal": {
+      "type": "object",
+      "properties": {
+        "literal": {
+          "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_Tracing_Literal",
+          "existingJavaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_Literal"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_CustomTag_Literal",
+      "javaInterfaces": [
+        "io.fabric8.istio.internal.api.telemetry.v1alpha1.isTracing_CustomTag_Type"
+      ]
+    },
+    "istio_io_api_telemetry_v1alpha1_Tracing_Environment": {
+      "type": "object",
+      "properties": {
+        "default_value": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_Environment",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource"
+      ]
+    },
+    "istio_io_api_telemetry_v1alpha1_Tracing_Literal": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_Literal",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource"
+      ]
+    },
+    "istio_io_api_telemetry_v1alpha1_Tracing_RequestHeader": {
+      "type": "object",
+      "properties": {
+        "default_value": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_RequestHeader",
+      "javaInterfaces": [
+        "io.fabric8.kubernetes.api.model.KubernetesResource"
+      ]
+    },
+    "istio_io_api_telemetry_v1alpha1_isMetricSelector_MetricMatch": {
+      "type": "object",
+      "interfaceType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.isMetricSelector_MetricMatch"
+    },
+    "istio_io_api_telemetry_v1alpha1_isTracing_CustomTag_Type": {
+      "type": "object",
+      "interfaceType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.isTracing_CustomTag_Type"
     },
     "istio_io_api_type_v1beta1_WorkloadSelector": {
       "type": "object",
@@ -1873,7 +2660,8 @@
           "existingJavaType": "io.fabric8.kubernetes.api.model.ObjectMeta"
         },
         "spec": {
-          "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.AuthorizationPolicySpec"
+          "$ref": "#/definitions/istio_io_api_security_v1beta1_AuthorizationPolicy",
+          "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.AuthorizationPolicy"
         },
         "status": {
           "$ref": "#/definitions/istio_io_api_meta_v1alpha1_IstioStatus",
@@ -2158,6 +2946,34 @@
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_HTTPFaultInjection",
       "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection"
     },
+    "istio_io_api_networking_v1beta1_HTTPFaultInjection_Abort": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_HTTPFaultInjection_Abort",
+      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Abort"
+    },
+    "istio_io_api_networking_v1beta1_HTTPFaultInjection_Abort_GrpcStatus": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_HTTPFaultInjection_Abort_GrpcStatus",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Abort_GrpcStatus"
+    },
+    "istio_io_api_networking_v1beta1_HTTPFaultInjection_Abort_Http2Error": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_HTTPFaultInjection_Abort_Http2Error",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Abort_Http2Error"
+    },
+    "istio_io_api_networking_v1beta1_HTTPFaultInjection_Abort_HttpStatus": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_HTTPFaultInjection_Abort_HttpStatus",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Abort_HttpStatus"
+    },
+    "istio_io_api_networking_v1beta1_HTTPFaultInjection_Delay": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_HTTPFaultInjection_Delay",
+      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Delay"
+    },
+    "istio_io_api_networking_v1beta1_HTTPFaultInjection_Delay_ExponentialDelay": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_HTTPFaultInjection_Delay_ExponentialDelay",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Delay_ExponentialDelay"
+    },
+    "istio_io_api_networking_v1beta1_HTTPFaultInjection_Delay_FixedDelay": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_HTTPFaultInjection_Delay_FixedDelay",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Delay_FixedDelay"
+    },
     "istio_io_api_networking_v1beta1_HTTPMatchRequest": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_HTTPMatchRequest",
       "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPMatchRequest"
@@ -2202,6 +3018,54 @@
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_L4MatchAttributes",
       "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.L4MatchAttributes"
     },
+    "istio_io_api_networking_v1beta1_LoadBalancerSettings": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_LoadBalancerSettings",
+      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings"
+    },
+    "istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHash": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHash",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHash"
+    },
+    "istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB",
+      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLB"
+    },
+    "istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB_HTTPCookie": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB_HTTPCookie",
+      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLB_HTTPCookie"
+    },
+    "istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB_HttpCookie": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB_HttpCookie",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLB_HttpCookie"
+    },
+    "istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB_HttpHeaderName": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB_HttpHeaderName",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLB_HttpHeaderName"
+    },
+    "istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB_HttpQueryParameterName": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB_HttpQueryParameterName",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLB_HttpQueryParameterName"
+    },
+    "istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB_UseSourceIp": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB_UseSourceIp",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLB_UseSourceIp"
+    },
+    "istio_io_api_networking_v1beta1_LoadBalancerSettings_Simple": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_LoadBalancerSettings_Simple",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_Simple"
+    },
+    "istio_io_api_networking_v1beta1_LocalityLoadBalancerSetting": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_LocalityLoadBalancerSetting",
+      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.LocalityLoadBalancerSetting"
+    },
+    "istio_io_api_networking_v1beta1_LocalityLoadBalancerSetting_Distribute": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_LocalityLoadBalancerSetting_Distribute",
+      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.LocalityLoadBalancerSetting_Distribute"
+    },
+    "istio_io_api_networking_v1beta1_LocalityLoadBalancerSetting_Failover": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_LocalityLoadBalancerSetting_Failover",
+      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.LocalityLoadBalancerSetting_Failover"
+    },
     "istio_io_api_networking_v1beta1_OutboundTrafficPolicy": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_OutboundTrafficPolicy",
       "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.OutboundTrafficPolicy"
@@ -2242,6 +3106,22 @@
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_Sidecar",
       "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.Sidecar"
     },
+    "istio_io_api_networking_v1beta1_StringMatch": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_StringMatch",
+      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.StringMatch"
+    },
+    "istio_io_api_networking_v1beta1_StringMatch_Exact": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_StringMatch_Exact",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.StringMatch_Exact"
+    },
+    "istio_io_api_networking_v1beta1_StringMatch_Prefix": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_StringMatch_Prefix",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.StringMatch_Prefix"
+    },
+    "istio_io_api_networking_v1beta1_StringMatch_Regex": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_StringMatch_Regex",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.StringMatch_Regex"
+    },
     "istio_io_api_networking_v1beta1_Subset": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_Subset",
       "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.Subset"
@@ -2278,6 +3158,42 @@
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_WorkloadSelector",
       "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.WorkloadSelector"
     },
+    "istio_io_api_networking_v1beta1_isHTTPFaultInjection_Abort_ErrorType": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_isHTTPFaultInjection_Abort_ErrorType",
+      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPFaultInjection_Abort_ErrorType"
+    },
+    "istio_io_api_networking_v1beta1_isHTTPFaultInjection_Delay_HttpDelayType": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_isHTTPFaultInjection_Delay_HttpDelayType",
+      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPFaultInjection_Delay_HttpDelayType"
+    },
+    "istio_io_api_networking_v1beta1_isLoadBalancerSettings_ConsistentHashLB_HashKey": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_isLoadBalancerSettings_ConsistentHashLB_HashKey",
+      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isLoadBalancerSettings_ConsistentHashLB_HashKey"
+    },
+    "istio_io_api_networking_v1beta1_isLoadBalancerSettings_LbPolicy": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_isLoadBalancerSettings_LbPolicy",
+      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isLoadBalancerSettings_LbPolicy"
+    },
+    "istio_io_api_networking_v1beta1_isStringMatch_MatchType": {
+      "$ref": "#/definitions/istio_io_api_networking_v1beta1_isStringMatch_MatchType",
+      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isStringMatch_MatchType"
+    },
+    "istio_io_api_security_v1beta1_AuthorizationPolicy": {
+      "$ref": "#/definitions/istio_io_api_security_v1beta1_AuthorizationPolicy",
+      "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.AuthorizationPolicy"
+    },
+    "istio_io_api_security_v1beta1_AuthorizationPolicy_ExtensionProvider": {
+      "$ref": "#/definitions/istio_io_api_security_v1beta1_AuthorizationPolicy_ExtensionProvider",
+      "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.AuthorizationPolicy_ExtensionProvider"
+    },
+    "istio_io_api_security_v1beta1_AuthorizationPolicy_Provider": {
+      "$ref": "#/definitions/istio_io_api_security_v1beta1_AuthorizationPolicy_Provider",
+      "javaType": "io.fabric8.istio.internal.api.security.v1beta1.AuthorizationPolicy_Provider"
+    },
+    "istio_io_api_security_v1beta1_Condition": {
+      "$ref": "#/definitions/istio_io_api_security_v1beta1_Condition",
+      "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.Condition"
+    },
     "istio_io_api_security_v1beta1_JWTHeader": {
       "$ref": "#/definitions/istio_io_api_security_v1beta1_JWTHeader",
       "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.JWTHeader"
@@ -2285,6 +3201,10 @@
     "istio_io_api_security_v1beta1_JWTRule": {
       "$ref": "#/definitions/istio_io_api_security_v1beta1_JWTRule",
       "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.JWTRule"
+    },
+    "istio_io_api_security_v1beta1_Operation": {
+      "$ref": "#/definitions/istio_io_api_security_v1beta1_Operation",
+      "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.Operation"
     },
     "istio_io_api_security_v1beta1_PeerAuthentication": {
       "$ref": "#/definitions/istio_io_api_security_v1beta1_PeerAuthentication",
@@ -2298,9 +3218,41 @@
       "$ref": "#/definitions/istio_io_api_security_v1beta1_RequestAuthentication",
       "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.RequestAuthentication"
     },
+    "istio_io_api_security_v1beta1_Rule": {
+      "$ref": "#/definitions/istio_io_api_security_v1beta1_Rule",
+      "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.Rule"
+    },
+    "istio_io_api_security_v1beta1_Rule_From": {
+      "$ref": "#/definitions/istio_io_api_security_v1beta1_Rule_From",
+      "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.Rule_From"
+    },
+    "istio_io_api_security_v1beta1_Rule_To": {
+      "$ref": "#/definitions/istio_io_api_security_v1beta1_Rule_To",
+      "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.Rule_To"
+    },
+    "istio_io_api_security_v1beta1_Source": {
+      "$ref": "#/definitions/istio_io_api_security_v1beta1_Source",
+      "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.Source"
+    },
+    "istio_io_api_security_v1beta1_isAuthorizationPolicy_ActionDetail": {
+      "$ref": "#/definitions/istio_io_api_security_v1beta1_isAuthorizationPolicy_ActionDetail",
+      "interfaceType": "io.fabric8.istio.internal.api.security.v1beta1.isAuthorizationPolicy_ActionDetail"
+    },
     "istio_io_api_telemetry_v1alpha1_AccessLogging": {
       "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_AccessLogging",
       "existingJavaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.AccessLogging"
+    },
+    "istio_io_api_telemetry_v1alpha1_MetricSelector": {
+      "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_MetricSelector",
+      "existingJavaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.MetricSelector"
+    },
+    "istio_io_api_telemetry_v1alpha1_MetricSelector_CustomMetric": {
+      "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_MetricSelector_CustomMetric",
+      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.MetricSelector_CustomMetric"
+    },
+    "istio_io_api_telemetry_v1alpha1_MetricSelector_Metric": {
+      "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_MetricSelector_Metric",
+      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.MetricSelector_Metric"
     },
     "istio_io_api_telemetry_v1alpha1_Metrics": {
       "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_Metrics",
@@ -2325,6 +3277,42 @@
     "istio_io_api_telemetry_v1alpha1_Tracing": {
       "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_Tracing",
       "existingJavaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing"
+    },
+    "istio_io_api_telemetry_v1alpha1_Tracing_CustomTag": {
+      "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_Tracing_CustomTag",
+      "existingJavaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_CustomTag"
+    },
+    "istio_io_api_telemetry_v1alpha1_Tracing_CustomTag_Environment": {
+      "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_Tracing_CustomTag_Environment",
+      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_CustomTag_Environment"
+    },
+    "istio_io_api_telemetry_v1alpha1_Tracing_CustomTag_Header": {
+      "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_Tracing_CustomTag_Header",
+      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_CustomTag_Header"
+    },
+    "istio_io_api_telemetry_v1alpha1_Tracing_CustomTag_Literal": {
+      "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_Tracing_CustomTag_Literal",
+      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_CustomTag_Literal"
+    },
+    "istio_io_api_telemetry_v1alpha1_Tracing_Environment": {
+      "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_Tracing_Environment",
+      "existingJavaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_Environment"
+    },
+    "istio_io_api_telemetry_v1alpha1_Tracing_Literal": {
+      "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_Tracing_Literal",
+      "existingJavaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_Literal"
+    },
+    "istio_io_api_telemetry_v1alpha1_Tracing_RequestHeader": {
+      "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_Tracing_RequestHeader",
+      "existingJavaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_RequestHeader"
+    },
+    "istio_io_api_telemetry_v1alpha1_isMetricSelector_MetricMatch": {
+      "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_isMetricSelector_MetricMatch",
+      "interfaceType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.isMetricSelector_MetricMatch"
+    },
+    "istio_io_api_telemetry_v1alpha1_isTracing_CustomTag_Type": {
+      "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_isTracing_CustomTag_Type",
+      "interfaceType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.isTracing_CustomTag_Type"
     },
     "istio_io_api_type_v1beta1_WorkloadSelector": {
       "$ref": "#/definitions/istio_io_api_type_v1beta1_WorkloadSelector",

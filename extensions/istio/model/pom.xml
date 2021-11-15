@@ -93,6 +93,7 @@
           <includeHashcodeAndEquals>false</includeHashcodeAndEquals>
           <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
           <customAnnotator>io.fabric8.kubernetes.ModelAnnotator</customAnnotator>
+          <customRuleFactory>io.fabric8.kubernetes.jsonschema2pojo.Fabric8RuleFactory</customRuleFactory>
         </configuration>
         <executions>
           <execution>
@@ -107,6 +108,11 @@
           <dependency>
             <groupId>io.fabric8</groupId>
             <artifactId>model-annotator</artifactId>
+            <version>${project.version}</version>
+          </dependency>
+          <dependency>
+            <groupId>io.fabric8</groupId>
+            <artifactId>kubernetes-model-jsonschema2pojo</artifactId>
             <version>${project.version}</version>
           </dependency>
         </dependencies>

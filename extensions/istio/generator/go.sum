@@ -213,8 +213,10 @@ github.com/evanphx/json-patch v4.9.0+incompatible/go.mod h1:50XU6AFN0ol/bzJsmQLi
 github.com/exponent-io/jsonpath v0.0.0-20151013193312-d6023ce2651d/go.mod h1:ZZMPRZwes7CROmyNKgQzC3XPs6L/G2EJLHddWejkmf4=
 github.com/fabric8io/kubernetes-client v1.4.35 h1:uxi2o/28eo/SMD6+6g0dwNj3oAIrocrgac/6wGQzt+Q=
 github.com/fabric8io/kubernetes-client v5.9.0+incompatible h1:Q/rhN1cP21eXgD5e0/v/Ubu0MN6SrjdY6nWCKTmjnB8=
+github.com/fabric8io/kubernetes-client v5.10.1+incompatible h1:TlycJBmLIFx47jMkRv+uM9Yxr/H6a5/VyvxmdUEtFbA=
 github.com/fabric8io/kubernetes-client/generator v0.0.0-20211110125842-563287e153e6 h1:u27TfA3kntussSaH6FovQJPKPsVPEIBmXJXya/RkDgQ=
 github.com/fabric8io/kubernetes-client/generator v0.0.0-20211110125842-563287e153e6/go.mod h1:wydcEZRiLNLAcuySkRKkcQdtcc0wMTKzvcOoKtQJiHw=
+github.com/fabric8io/kubernetes-client/generator v0.0.0-20211112135126-278ca235dc4a h1:SK5QR/t9Wpupi7MJUsV1eguFg1aDnHPG6KQ4HyDp5yg=
 github.com/fatih/camelcase v1.0.0/go.mod h1:yN2Sb0lFhZJUdVvtELVWefmrXpuZESvPmqwoZc+/fpc=
 github.com/fatih/color v1.7.0/go.mod h1:Zm6kSWBoL9eyXnKyktHP6abPY2pDugNf5KwzbycvMj4=
 github.com/fatih/structs v1.1.0/go.mod h1:9NiDSp5zOcgEDl+j00MP/WkGVPOlPRLejGD8Ga6PJ7M=
@@ -1098,6 +1100,7 @@ istio.io/api v0.0.0-20211109143256-621f0a95f3f6 h1:r8cBR83j4DHt8eZQYfrEHTyXaddaj
 istio.io/api v0.0.0-20211109143256-621f0a95f3f6/go.mod h1:lavaUNsnT7RGyMFNOGgV5XvOgP3fkTSZkxP/0H/ISt4=
 istio.io/api v0.0.0-20211110213940-6088f17843a9 h1:+ce7RuyEXnBAxTNYA1bn1NOswda+Oew74bYmeo6IILY=
 istio.io/api v0.0.0-20211110213940-6088f17843a9/go.mod h1:lavaUNsnT7RGyMFNOGgV5XvOgP3fkTSZkxP/0H/ISt4=
+istio.io/api v0.0.0-20211111170902-f2972da3100e h1:nj+HLr+P9iZ7Lfj72Tzj8xw09LFlRJk+w9pmq8IgTFw=
 istio.io/client-go v0.0.0-20200626204548-8f69a2d0fe26 h1:XLTmjndquXukwZVU9G6c3d/2ew43te4SuMap8UTP1R4=
 istio.io/client-go v0.0.0-20200626204548-8f69a2d0fe26/go.mod h1:OQTGBgFbgNzUMafgS5LExTTMQAA+JeC6d0m1Tphi2dk=
 istio.io/client-go v1.11.4 h1:0wxPNJjexKBswvvdSgucnvwmMn7QhHale/xMtXQXUAo=

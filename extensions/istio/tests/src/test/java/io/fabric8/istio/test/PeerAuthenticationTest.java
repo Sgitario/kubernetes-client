@@ -27,7 +27,6 @@ import org.junit.jupiter.api.Test;
 import io.fabric8.istio.api.security.v1beta1.PeerAuthentication;
 import io.fabric8.istio.api.security.v1beta1.PeerAuthenticationBuilder;
 import io.fabric8.istio.client.IstioClient;
-import io.fabric8.istio.internal.api.security.v1beta1.MutualTLSModes;
 import io.fabric8.istio.internal.api.security.v1beta1.PeerAuthentication_MutualTLSBuilder;
 import io.fabric8.istio.internal.api.type.v1beta1.WorkloadSelectorBuilder;
 import io.fabric8.istio.mock.EnableIstioMockClient;
@@ -63,7 +62,7 @@ class PeerAuthenticationTest {
       .endMetadata()
       .withNewInternalSpec()
       .withSelector(new WorkloadSelectorBuilder().addToMatchLabels("app", "reviews").build())
-      .withMtls(new PeerAuthentication_MutualTLSBuilder().withMode(MutualTLSModes.STRICT).build())
+      .withMtls(new PeerAuthentication_MutualTLSBuilder().withMode(3).build())
       .endInternalSpec()
       .build();
 

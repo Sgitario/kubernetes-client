@@ -20,20 +20,14 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.net.HttpURLConnection;
-import java.util.Collections;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import io.fabric8.istio.api.networking.v1beta1.Gateway;
-import io.fabric8.istio.api.networking.v1beta1.GatewayBuilder;
 import io.fabric8.istio.api.networking.v1beta1.ServiceEntry;
 import io.fabric8.istio.api.networking.v1beta1.ServiceEntryBuilder;
 import io.fabric8.istio.client.IstioClient;
 import io.fabric8.istio.internal.api.networking.v1beta1.PortBuilder;
-import io.fabric8.istio.internal.api.networking.v1beta1.ServerBuilder;
-import io.fabric8.istio.internal.api.networking.v1beta1.ServerTLSSettingsBuilder;
-import io.fabric8.istio.internal.api.networking.v1beta1.ServiceEntryLocation;
 import io.fabric8.istio.mock.EnableIstioMockClient;
 import io.fabric8.istio.mock.IstioMockServer;
 import io.fabric8.kubernetes.api.model.DeletionPropagation;
@@ -68,7 +62,7 @@ class ServiceEntryTest {
       .endMetadata()
       .withNewInternalSpec()
       .withHosts("api.dropboxapi.com", "www.googleapis.com")
-      .withLocation(ServiceEntryLocation.MESH_EXTERNAL)
+      .withLocation(2)
       .withPorts(new PortBuilder().withName("https").withProtocol("TLS").withNumber(443).build())
       .endInternalSpec()
       .build();
@@ -84,9 +78,9 @@ class ServiceEntryTest {
         + "\"kind\":\"ServiceEntry\","
         + "\"metadata\":{\"name\":\"external-svc-https\"},"
         + "\"spec\":{"
-        +   "\"hosts\":[\"api.dropboxapi.com\",\"www.googleapis.com\"],"
-        +   "\"location\":0,"
-        +   "\"ports\":[{\"name\":\"https\",\"number\":443,\"protocol\":\"TLS\"}]}}",
+        + "\"hosts\":[\"api.dropboxapi.com\",\"www.googleapis.com\"],"
+        + "\"location\":2,"
+        + "\"ports\":[{\"name\":\"https\",\"number\":443,\"protocol\":\"TLS\"}]}}",
       recordedRequest.getBody().readUtf8());
   }
 

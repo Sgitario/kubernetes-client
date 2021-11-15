@@ -24,15 +24,10 @@ import java.net.HttpURLConnection;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import io.fabric8.istio.api.networking.v1beta1.ServiceEntry;
-import io.fabric8.istio.api.networking.v1beta1.ServiceEntryBuilder;
 import io.fabric8.istio.api.networking.v1beta1.Sidecar;
 import io.fabric8.istio.api.networking.v1beta1.SidecarBuilder;
 import io.fabric8.istio.client.IstioClient;
-import io.fabric8.istio.internal.api.networking.v1beta1.IstioEgressListener;
 import io.fabric8.istio.internal.api.networking.v1beta1.IstioEgressListenerBuilder;
-import io.fabric8.istio.internal.api.networking.v1beta1.PortBuilder;
-import io.fabric8.istio.internal.api.networking.v1beta1.ServiceEntryLocation;
 import io.fabric8.istio.mock.EnableIstioMockClient;
 import io.fabric8.istio.mock.IstioMockServer;
 import io.fabric8.kubernetes.api.model.DeletionPropagation;

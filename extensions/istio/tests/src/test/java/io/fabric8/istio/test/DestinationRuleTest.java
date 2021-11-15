@@ -28,8 +28,10 @@ import io.fabric8.istio.api.networking.v1beta1.DestinationRule;
 import io.fabric8.istio.api.networking.v1beta1.DestinationRuleBuilder;
 import io.fabric8.istio.client.IstioClient;
 import io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsBuilder;
-import io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsConsistentHash;
-import io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsSimple;
+import io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHash;
+import io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLBBuilder;
+import io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLB_HttpHeaderName;
+import io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_SimpleBuilder;
 import io.fabric8.istio.mock.EnableIstioMockClient;
 import io.fabric8.istio.mock.IstioMockServer;
 import io.fabric8.kubernetes.api.model.DeletionPropagation;
@@ -65,7 +67,8 @@ class DestinationRuleTest {
       .withNewInternalSpec()
       .withHost("ratings.prod.svc.cluster.local")
       .withNewTrafficPolicy()
-      .withLoadBalancer(new LoadBalancerSettingsBuilder().withSimple(LoadBalancerSettingsSimple.RANDOM).build())
+      .withLoadBalancer(
+        new LoadBalancerSettingsBuilder().withLbPolicy(new LoadBalancerSettings_SimpleBuilder().withSimple(2).build()).build())
       .endTrafficPolicy()
       .endInternalSpec()
       .build();
@@ -81,8 +84,8 @@ class DestinationRuleTest {
         + "\"kind\":\"DestinationRule\","
         + "\"metadata\":{\"name\":\"reviews-route\"},"
         + "\"spec\":{"
-        +   "\"host\":\"ratings.prod.svc.cluster.local\","
-        +   "\"traffic_policy\":{\"load_balancer\":{\"simple\":\"RANDOM\"}}}}",
+        + "\"host\":\"ratings.prod.svc.cluster.local\","
+        + "\"traffic_policy\":{\"load_balancer\":{\"simple\":2}}}}",
       recordedRequest.getBody().readUtf8());
   }
 
@@ -97,7 +100,10 @@ class DestinationRuleTest {
       .withNewInternalSpec()
       .withHost("ratings.prod.svc.cluster.local")
       .withNewTrafficPolicy()
-      .withLoadBalancer(new LoadBalancerSettingsBuilder().withConsistentHash(LoadBalancerSettingsConsistentHash.httpHeaderName("x-user")).build())
+      .withLoadBalancer(
+        new LoadBalancerSettingsBuilder().withLbPolicy(
+          new LoadBalancerSettings_ConsistentHash(new LoadBalancerSettings_ConsistentHashLBBuilder().withHashKey(
+            new LoadBalancerSettings_ConsistentHashLB_HttpHeaderName("x-user")).build())).build())
       .endTrafficPolicy()
       .endInternalSpec()
       .build();
@@ -113,8 +119,8 @@ class DestinationRuleTest {
         + "\"kind\":\"DestinationRule\","
         + "\"metadata\":{\"name\":\"reviews-route\"},"
         + "\"spec\":{"
-        +   "\"host\":\"ratings.prod.svc.cluster.local\","
-        +   "\"traffic_policy\":{\"load_balancer\":{\"consistentHash\":{\"http_header_name\":\"x-user\"}}}}}",
+        + "\"host\":\"ratings.prod.svc.cluster.local\","
+        + "\"traffic_policy\":{\"load_balancer\":{\"consistent_hash\":{\"http_header_name\":\"x-user\"}}}}}",
       recordedRequest.getBody().readUtf8());
   }
 

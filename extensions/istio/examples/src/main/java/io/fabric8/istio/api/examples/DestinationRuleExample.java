@@ -22,7 +22,7 @@ import io.fabric8.istio.api.networking.v1beta1.DestinationRuleBuilder;
 import io.fabric8.istio.api.networking.v1beta1.DestinationRuleList;
 import io.fabric8.istio.client.IstioClient;
 import io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsBuilder;
-import io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsSimple;
+import io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_SimpleBuilder;
 
 public class DestinationRuleExample {
   private static final String NAMESPACE = "test";
@@ -34,13 +34,14 @@ public class DestinationRuleExample {
     System.out.println("Creating a destination rule");
     // Example from: https://istio.io/latest/docs/reference/config/networking/destination-rule/
     client.destinationRules().inNamespace(NAMESPACE).create(new DestinationRuleBuilder()
-        .withNewMetadata()
-          .withName("reviews-route")
-        .endMetadata()
-        .withNewInternalSpec()
-        .withHost("ratings.prod.svc.cluster.local")
-        .withNewTrafficPolicy()
-        .withLoadBalancer(new LoadBalancerSettingsBuilder().withSimple(LoadBalancerSettingsSimple.RANDOM).build())
+      .withNewMetadata()
+      .withName("reviews-route")
+      .endMetadata()
+      .withNewInternalSpec()
+      .withHost("ratings.prod.svc.cluster.local")
+      .withNewTrafficPolicy()
+      .withLoadBalancer(
+        new LoadBalancerSettingsBuilder().withLbPolicy(new LoadBalancerSettings_SimpleBuilder().withSimple(2).build()).build())
         .endTrafficPolicy()
         .endInternalSpec()
       .build());

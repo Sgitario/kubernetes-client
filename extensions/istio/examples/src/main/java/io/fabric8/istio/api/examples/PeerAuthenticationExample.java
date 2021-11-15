@@ -21,7 +21,6 @@ import org.slf4j.LoggerFactory;
 import io.fabric8.istio.api.security.v1beta1.PeerAuthenticationBuilder;
 import io.fabric8.istio.api.security.v1beta1.PeerAuthenticationList;
 import io.fabric8.istio.client.IstioClient;
-import io.fabric8.istio.internal.api.security.v1beta1.MutualTLSModes;
 import io.fabric8.istio.internal.api.security.v1beta1.PeerAuthentication_MutualTLSBuilder;
 import io.fabric8.istio.internal.api.type.v1beta1.WorkloadSelectorBuilder;
 
@@ -38,8 +37,8 @@ public class PeerAuthenticationExample {
       .withName("details-svc")
       .endMetadata()
       .withNewInternalSpec()
-        .withSelector(new WorkloadSelectorBuilder().addToMatchLabels("app", "reviews").build())
-        .withMtls(new PeerAuthentication_MutualTLSBuilder().withMode(MutualTLSModes.STRICT).build())
+      .withSelector(new WorkloadSelectorBuilder().addToMatchLabels("app", "reviews").build())
+      .withMtls(new PeerAuthentication_MutualTLSBuilder().withMode(1).build())
       .endInternalSpec()
       .build());
 

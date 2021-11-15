@@ -28,13 +28,12 @@ import org.junit.jupiter.api.Test;
 import io.fabric8.istio.api.security.v1beta1.AuthorizationPolicy;
 import io.fabric8.istio.api.security.v1beta1.AuthorizationPolicyBuilder;
 import io.fabric8.istio.client.IstioClient;
-import io.fabric8.istio.internal.api.security.v1beta1.AuthorizationPolicyAction;
 import io.fabric8.istio.internal.api.security.v1beta1.ConditionBuilder;
-import io.fabric8.istio.internal.api.security.v1beta1.FromBuilder;
 import io.fabric8.istio.internal.api.security.v1beta1.OperationBuilder;
 import io.fabric8.istio.internal.api.security.v1beta1.RuleBuilder;
+import io.fabric8.istio.internal.api.security.v1beta1.Rule_FromBuilder;
+import io.fabric8.istio.internal.api.security.v1beta1.Rule_ToBuilder;
 import io.fabric8.istio.internal.api.security.v1beta1.SourceBuilder;
-import io.fabric8.istio.internal.api.security.v1beta1.ToBuilder;
 import io.fabric8.istio.internal.api.type.v1beta1.WorkloadSelectorBuilder;
 import io.fabric8.istio.mock.EnableIstioMockClient;
 import io.fabric8.istio.mock.IstioMockServer;
@@ -67,16 +66,18 @@ class AuthorizationPolicyTest {
       .withNewMetadata()
       .withName("httpbin")
       .endMetadata()
-      .withNewSpec()
+      .withNewInternalSpec()
       .withSelector(new WorkloadSelectorBuilder().withMatchLabels(Collections.singletonMap("app", "httpbin")).build())
-      .withAction(AuthorizationPolicyAction.ALLOW)
+      .withAction(1)
       .withRules(new RuleBuilder()
-        .withFrom(new FromBuilder().withSource(new SourceBuilder().withPrincipals("cluster.local/ns/default/sa/sleep").build()).build(),
-          new FromBuilder().withSource(new SourceBuilder().withNamespaces("dev").build()).build())
-        .withTo(new ToBuilder().withOperation(new OperationBuilder().withMethods("GET").build()).build())
+        .withFrom(
+          new Rule_FromBuilder().withSource(new SourceBuilder().withPrincipals("cluster.local/ns/default/sa/sleep").build())
+            .build(),
+          new Rule_FromBuilder().withSource(new SourceBuilder().withNamespaces("dev").build()).build())
+        .withTo(new Rule_ToBuilder().withOperation(new OperationBuilder().withMethods("GET").build()).build())
         .withWhen(new ConditionBuilder().withKey("request.auth.claims[iss]").withValues("https://accounts.google.com").build())
         .build())
-      .endSpec()
+      .endInternalSpec()
       .build();
 
     server.expect().post().withPath("/apis/security.istio.io/v1beta1/namespaces/ns2/authorizationpolicies")
@@ -90,13 +91,13 @@ class AuthorizationPolicyTest {
         + "\"kind\":\"AuthorizationPolicy\","
         + "\"metadata\":{\"name\":\"httpbin\"},"
         + "\"spec\":{"
-        +   "\"action\":\"ALLOW\","
-        +   "\"rules\":["
-        +     "{\"from\":[{\"source\":{\"principals\":[\"cluster.local/ns/default/sa/sleep\"]}},"
-        +                 "{\"source\":{\"namespaces\":[\"dev\"]}}],"
-        +     "\"to\":[{\"operation\":{\"methods\":[\"GET\"]}}],"
-        +     "\"when\":[{\"key\":\"request.auth.claims[iss]\",\"values\":[\"https://accounts.google.com\"]}]}],"
-        +   "\"selector\":{\"match_labels\":{\"app\":\"httpbin\"}}}}",
+        + "\"action\":1,"
+        + "\"rules\":["
+        + "{\"from\":[{\"source\":{\"principals\":[\"cluster.local/ns/default/sa/sleep\"]}},"
+        + "{\"source\":{\"namespaces\":[\"dev\"]}}],"
+        + "\"to\":[{\"operation\":{\"methods\":[\"GET\"]}}],"
+        + "\"when\":[{\"key\":\"request.auth.claims[iss]\",\"values\":[\"https://accounts.google.com\"]}]}],"
+        + "\"selector\":{\"match_labels\":{\"app\":\"httpbin\"}}}}",
       recordedRequest.getBody().readUtf8());
   }
 
