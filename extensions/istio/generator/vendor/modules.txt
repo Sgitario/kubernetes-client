@@ -1,0 +1,72 @@
+# github.com/fabric8io/kubernetes-client/generator v0.0.0 => ./../../../generator
+github.com/fabric8io/kubernetes-client/generator/pkg/schemagen
+# github.com/go-logr/logr v0.2.0
+github.com/go-logr/logr
+# github.com/gogo/protobuf v1.3.2
+github.com/gogo/protobuf/gogoproto
+github.com/gogo/protobuf/jsonpb
+github.com/gogo/protobuf/proto
+github.com/gogo/protobuf/protoc-gen-gogo/descriptor
+github.com/gogo/protobuf/sortkeys
+github.com/gogo/protobuf/types
+# github.com/google/gofuzz v1.1.0
+github.com/google/gofuzz
+# github.com/json-iterator/go v1.1.10
+github.com/json-iterator/go
+# github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd
+github.com/modern-go/concurrent
+# github.com/modern-go/reflect2 v1.0.1
+github.com/modern-go/reflect2
+# golang.org/x/net v0.0.0-20201110031124-69a78807bb2b
+golang.org/x/net/http/httpguts
+golang.org/x/net/http2
+golang.org/x/net/http2/hpack
+golang.org/x/net/idna
+# golang.org/x/text v0.3.3
+golang.org/x/text/secure/bidirule
+golang.org/x/text/transform
+golang.org/x/text/unicode/bidi
+golang.org/x/text/unicode/norm
+# gopkg.in/inf.v0 v0.9.1
+gopkg.in/inf.v0
+# gopkg.in/yaml.v2 v2.2.8
+gopkg.in/yaml.v2
+# istio.io/api v0.0.0-20211012192923-310f2a3f3c76
+istio.io/api/analysis/v1alpha1
+istio.io/api/meta/v1alpha1
+istio.io/api/networking/v1beta1
+istio.io/api/security/v1beta1
+istio.io/api/telemetry/v1alpha1
+istio.io/api/type/v1beta1
+# istio.io/client-go v1.11.4
+istio.io/client-go/pkg/apis/networking/v1beta1
+istio.io/client-go/pkg/apis/security/v1beta1
+istio.io/client-go/pkg/apis/telemetry/v1alpha1
+# istio.io/gogo-genproto v0.0.0-20210113155706-4daf5697332f
+istio.io/gogo-genproto/googleapis/google/api
+# k8s.io/apimachinery v0.21.0 => k8s.io/apimachinery v0.19.7
+k8s.io/apimachinery/pkg/api/resource
+k8s.io/apimachinery/pkg/apis/meta/v1
+k8s.io/apimachinery/pkg/conversion
+k8s.io/apimachinery/pkg/conversion/queryparams
+k8s.io/apimachinery/pkg/fields
+k8s.io/apimachinery/pkg/labels
+k8s.io/apimachinery/pkg/runtime
+k8s.io/apimachinery/pkg/runtime/schema
+k8s.io/apimachinery/pkg/selection
+k8s.io/apimachinery/pkg/types
+k8s.io/apimachinery/pkg/util/errors
+k8s.io/apimachinery/pkg/util/intstr
+k8s.io/apimachinery/pkg/util/json
+k8s.io/apimachinery/pkg/util/naming
+k8s.io/apimachinery/pkg/util/net
+k8s.io/apimachinery/pkg/util/runtime
+k8s.io/apimachinery/pkg/util/sets
+k8s.io/apimachinery/pkg/util/validation
+k8s.io/apimachinery/pkg/util/validation/field
+k8s.io/apimachinery/pkg/watch
+k8s.io/apimachinery/third_party/forked/golang/reflect
+# k8s.io/klog/v2 v2.2.0
+k8s.io/klog/v2
+# sigs.k8s.io/structured-merge-diff/v4 v4.0.1
+sigs.k8s.io/structured-merge-diff/v4/value
