@@ -44,6 +44,7 @@ type schemaGenerator struct {
 	providedTypes        []ProvidedType
 	constraints          map[reflect.Type]map[string]*Constraint // type -> field name -> constraint
 	interfacesMapping    map[string][]reflect.Type               // interface -> list of implementations
+	javaNameRules        []JavaNameRule                          // custom java name rules by extension
 	generatedTypesPrefix string
 }
 
@@ -60,11 +61,13 @@ const (
 	BasePackage string   = "io.fabric8.kubernetes.api.model"
 )
 
+type JavaNameRule func(packageName *string, javaName *string)
+
 func GenerateSchema(schemaId string, crdLists map[reflect.Type]CrdScope, providedPackages map[string]string, manualTypeMap map[reflect.Type]string, packageMapping map[string]PackageInformation, mappingSchema map[string]string, providedTypes []ProvidedType, constraints map[reflect.Type]map[string]*Constraint, generatedTypesPrefix string) string {
-	return GenerateSchemaWithAllOptions(schemaId, crdLists, make(map[reflect.Type]*JSONObjectDescriptor), providedPackages, manualTypeMap, packageMapping, mappingSchema, providedTypes, constraints, make(map[string][]reflect.Type), generatedTypesPrefix)
+	return GenerateSchemaWithAllOptions(schemaId, crdLists, make(map[reflect.Type]*JSONObjectDescriptor), providedPackages, manualTypeMap, packageMapping, mappingSchema, providedTypes, constraints, make(map[string][]reflect.Type), make([]JavaNameRule, 0), generatedTypesPrefix)
 }
 
-func GenerateSchemaWithAllOptions(schemaId string, crdLists map[reflect.Type]CrdScope, typesDescriptors map[reflect.Type]*JSONObjectDescriptor, providedPackages map[string]string, manualTypeMap map[reflect.Type]string, packageMapping map[string]PackageInformation, mappingSchema map[string]string, providedTypes []ProvidedType, constraints map[reflect.Type]map[string]*Constraint, interfacesMapping map[string][]reflect.Type, generatedTypesPrefix string) string {
+func GenerateSchemaWithAllOptions(schemaId string, crdLists map[reflect.Type]CrdScope, typesDescriptors map[reflect.Type]*JSONObjectDescriptor, providedPackages map[string]string, manualTypeMap map[reflect.Type]string, packageMapping map[string]PackageInformation, mappingSchema map[string]string, providedTypes []ProvidedType, constraints map[reflect.Type]map[string]*Constraint, interfacesMapping map[string][]reflect.Type, javaNameRules []JavaNameRule, generatedTypesPrefix string) string {
 	g := &schemaGenerator{
 		crdLists:             crdLists,
 		types:                typesDescriptors,
@@ -76,6 +79,7 @@ func GenerateSchemaWithAllOptions(schemaId string, crdLists map[reflect.Type]Crd
 		constraints:          constraints,
 		generatedTypesPrefix: generatedTypesPrefix,
 		interfacesMapping:    interfacesMapping,
+		javaNameRules:        javaNameRules,
 	}
 	schema, err := g.generate(schemaId, crdLists)
 
@@ -670,6 +674,12 @@ func (g *schemaGenerator) adaptJavaClassName(className string) string {
 
 	// If the java name starts with a lowercase character, change it to uppercase
 	className = strings.Title(className)
+
+	// apply custom rules
+	for _, rule := range g.javaNameRules {
+		rule(&packageName, &className)
+	}
+
 	return packageName + "." + className
 }
 
