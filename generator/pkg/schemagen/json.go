@@ -61,6 +61,10 @@ type JavaInterfaceDescriptor struct {
 	InterfaceType string `json:"interfaceType"`
 }
 
+type EnumTypeDescriptor struct {
+	EnumType string `json:"enumType"`
+}
+
 type ExistingJavaTypeDescriptor struct {
 	ExistingJavaType string `json:"existingJavaType"`
 }
@@ -84,6 +88,7 @@ type JSONPropertyDescriptor struct {
 	*ExistingJavaTypeDescriptor
 	*JavaInterfacesDescriptor
 	*JavaInterfaceDescriptor
+	*EnumTypeDescriptor
 	JavaExtends *JavaExtendsDescriptor `json:"extends,omitempty"`
 }
 

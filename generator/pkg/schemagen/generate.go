@@ -20,6 +20,7 @@ import (
 	"encoding/json"
 	"log"
 	"reflect"
+	"strconv"
 	"strings"
 )
 
@@ -461,6 +462,33 @@ func (g *schemaGenerator) getStructProperties(t reflect.Type) map[string]JSONPro
 	return result
 }
 
+func (g *schemaGenerator) getEnumNames(t reflect.Type) map[string]JSONPropertyDescriptor {
+	instance := reflect.New(t)
+	result := map[string]JSONPropertyDescriptor{}
+	ipv := reflect.ValueOf(&instance).Elem()
+
+	var index int64
+	end := false
+	index = 0
+	for !end {
+		ipv.SetInt(index)
+		value := instance.String()
+		if value == strconv.FormatInt(index, 10) {
+			end = true
+		} else {
+			result[value] = JSONPropertyDescriptor{
+				JSONDescriptor: &JSONDescriptor{Type: "value"},
+				EnumTypeDescriptor: &EnumTypeDescriptor{
+					EnumType: g.resolveJavaClassUsingMappingSchema(t),
+				},
+			}
+		}
+
+		index++
+	}
+	return result
+}
+
 func (g *schemaGenerator) propertyDescriptor(field reflect.StructField, parentType reflect.Type) JSONPropertyDescriptor {
 
 	// type might have manual overwrite
@@ -526,6 +554,7 @@ func (g *schemaGenerator) fieldCategory(field reflect.StructField) FieldType {
 	fieldType := g.resolvePointer(field.Type)
 
 	jsonTag := field.Tag.Get("json")
+	//protobufTag := field.Tag.Get("protobuf")
 
 	jsonFieldName := g.jsonFieldName(field)
 
@@ -539,6 +568,13 @@ func (g *schemaGenerator) fieldCategory(field reflect.StructField) FieldType {
 	if field.Anonymous && (jsonTag == "" || strings.Contains(jsonTag, "inline") || jsonFieldName == "") {
 		return EMBEDDED
 	}
+
+	// enum examples:
+	// - Mode    PeerAuthenticationMode `protobuf:"varint,1,opt,name=mode,proto3,enum=package.to.type.PeerAuthenticationMode" json:"mode,omitempty"`
+
+	//if strings.Contains(protobufTag, "enum") {
+	//	return ENUM
+	//}
 
 	switch fieldType.Kind() {
 	case reflect.Array:
@@ -655,7 +691,7 @@ func (g *schemaGenerator) resolveJavaClassForProvidedType(t reflect.Type) string
 			return g.adaptJavaClassName(pt.JavaClass)
 		}
 	}
-	panic("Failed to resolve java class for provided type")
+	panic("Failed to resolve java class for provided type: " + t.PkgPath() + "." + t.Name())
 }
 
 func (g *schemaGenerator) isPartOfOwnPackage(t reflect.Type) bool {

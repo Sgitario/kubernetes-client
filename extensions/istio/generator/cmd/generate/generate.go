@@ -117,7 +117,10 @@ func main() {
 		"istio.io/api/telemetry/v1alpha1/isTracing_CustomTag_Type":     {reflect.TypeOf(api_telemetry_v1alpha1.Tracing_CustomTag_Literal{}), reflect.TypeOf(api_telemetry_v1alpha1.Tracing_CustomTag_Environment{}), reflect.TypeOf(api_telemetry_v1alpha1.Tracing_CustomTag_Header{})},
 	}
 
-	json := schemagen.GenerateSchemaWithAllOptions("http://fabric8.io/istio/IstioSchema#", crdLists, typesDescriptors, providedPackages, manualTypeMap, packageMapping, mappingSchema, providedTypes, constraints, interfacesMapping, "io.fabric8")
+	// Register additional enum types
+	enumTypes := []reflect.Type{}
+
+	json := schemagen.GenerateSchemaWithAllOptions("http://fabric8.io/istio/IstioSchema#", crdLists, typesDescriptors, providedPackages, manualTypeMap, packageMapping, mappingSchema, providedTypes, constraints, interfacesMapping, enumTypes, "io.fabric8")
 
 	fmt.Println(json)
 }
