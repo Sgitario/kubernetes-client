@@ -17,6 +17,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/gogo/protobuf/types"
 
@@ -117,10 +118,14 @@ func main() {
 		"istio.io/api/telemetry/v1alpha1/isTracing_CustomTag_Type":     {reflect.TypeOf(api_telemetry_v1alpha1.Tracing_CustomTag_Literal{}), reflect.TypeOf(api_telemetry_v1alpha1.Tracing_CustomTag_Environment{}), reflect.TypeOf(api_telemetry_v1alpha1.Tracing_CustomTag_Header{})},
 	}
 
-	// Register additional enum types
-	enumTypes := []reflect.Type{}
+	// custom name rules
+	javaNameRules := []schemagen.JavaNameRule{
+		func(packageName *string, className *string) {
+			*className = strings.Replace(*className, "_", "", -1)
+		},
+	}
 
-	json := schemagen.GenerateSchemaWithAllOptions("http://fabric8.io/istio/IstioSchema#", crdLists, typesDescriptors, providedPackages, manualTypeMap, packageMapping, mappingSchema, providedTypes, constraints, interfacesMapping, enumTypes, "io.fabric8")
+	json := schemagen.GenerateSchemaWithAllOptions("http://fabric8.io/istio/IstioSchema#", crdLists, typesDescriptors, providedPackages, manualTypeMap, packageMapping, mappingSchema, providedTypes, constraints, interfacesMapping, javaNameRules, "io.fabric8")
 
 	fmt.Println(json)
 }

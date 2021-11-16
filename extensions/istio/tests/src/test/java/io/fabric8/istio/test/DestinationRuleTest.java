@@ -28,10 +28,10 @@ import io.fabric8.istio.api.networking.v1beta1.DestinationRule;
 import io.fabric8.istio.api.networking.v1beta1.DestinationRuleBuilder;
 import io.fabric8.istio.client.IstioClient;
 import io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsBuilder;
-import io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHash;
-import io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLBBuilder;
-import io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLB_HttpHeaderName;
-import io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_SimpleBuilder;
+import io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsConsistentHash;
+import io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsConsistentHashLBBuilder;
+import io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsConsistentHashLBHttpHeaderName;
+import io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsSimple;
 import io.fabric8.istio.mock.EnableIstioMockClient;
 import io.fabric8.istio.mock.IstioMockServer;
 import io.fabric8.kubernetes.api.model.DeletionPropagation;
@@ -68,7 +68,7 @@ class DestinationRuleTest {
       .withHost("ratings.prod.svc.cluster.local")
       .withNewTrafficPolicy()
       .withLoadBalancer(
-        new LoadBalancerSettingsBuilder().withLbPolicy(new LoadBalancerSettings_SimpleBuilder().withSimple(2).build()).build())
+        new LoadBalancerSettingsBuilder().withLbPolicy(new LoadBalancerSettingsSimple(2)).build())
       .endTrafficPolicy()
       .endInternalSpec()
       .build();
@@ -102,8 +102,8 @@ class DestinationRuleTest {
       .withNewTrafficPolicy()
       .withLoadBalancer(
         new LoadBalancerSettingsBuilder().withLbPolicy(
-          new LoadBalancerSettings_ConsistentHash(new LoadBalancerSettings_ConsistentHashLBBuilder().withHashKey(
-            new LoadBalancerSettings_ConsistentHashLB_HttpHeaderName("x-user")).build())).build())
+          new LoadBalancerSettingsConsistentHash(new LoadBalancerSettingsConsistentHashLBBuilder().withHashKey(
+            new LoadBalancerSettingsConsistentHashLBHttpHeaderName("x-user")).build())).build())
       .endTrafficPolicy()
       .endInternalSpec()
       .build();

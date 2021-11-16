@@ -33,7 +33,7 @@ import io.fabric8.istio.internal.api.networking.v1beta1.HTTPRewriteBuilder;
 import io.fabric8.istio.internal.api.networking.v1beta1.HTTPRouteBuilder;
 import io.fabric8.istio.internal.api.networking.v1beta1.HTTPRouteDestinationBuilder;
 import io.fabric8.istio.internal.api.networking.v1beta1.StringMatch;
-import io.fabric8.istio.internal.api.networking.v1beta1.StringMatch_Prefix;
+import io.fabric8.istio.internal.api.networking.v1beta1.StringMatchPrefix;
 import io.fabric8.istio.mock.EnableIstioMockClient;
 import io.fabric8.istio.mock.IstioMockServer;
 import io.fabric8.kubernetes.api.model.DeletionPropagation;
@@ -71,8 +71,8 @@ class VirtualServiceTest {
       .withHttp(
         new HTTPRouteBuilder().withName("reviews-v2-routes")
           .withMatch(
-            new HTTPMatchRequestBuilder().withUri(new StringMatch(new StringMatch_Prefix("/wpcatalog"))).build(),
-            new HTTPMatchRequestBuilder().withUri(new StringMatch(new StringMatch_Prefix("/consumercatalog"))).build()
+            new HTTPMatchRequestBuilder().withUri(new StringMatch(new StringMatchPrefix("/wpcatalog"))).build(),
+            new HTTPMatchRequestBuilder().withUri(new StringMatch(new StringMatchPrefix("/consumercatalog"))).build()
           )
           .withRewrite(new HTTPRewriteBuilder().withUri("/newcatalog").build())
           .withRoute(

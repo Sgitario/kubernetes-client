@@ -26,8 +26,8 @@ import io.fabric8.istio.client.IstioClient;
 import io.fabric8.istio.internal.api.security.v1beta1.ConditionBuilder;
 import io.fabric8.istio.internal.api.security.v1beta1.OperationBuilder;
 import io.fabric8.istio.internal.api.security.v1beta1.RuleBuilder;
-import io.fabric8.istio.internal.api.security.v1beta1.Rule_FromBuilder;
-import io.fabric8.istio.internal.api.security.v1beta1.Rule_ToBuilder;
+import io.fabric8.istio.internal.api.security.v1beta1.RuleFromBuilder;
+import io.fabric8.istio.internal.api.security.v1beta1.RuleToBuilder;
 import io.fabric8.istio.internal.api.security.v1beta1.SourceBuilder;
 import io.fabric8.istio.internal.api.type.v1beta1.WorkloadSelectorBuilder;
 
@@ -48,10 +48,10 @@ public class AuthorizationPolicyExample {
       .withAction(1)
       .withRules(new RuleBuilder()
         .withFrom(
-          new Rule_FromBuilder().withSource(new SourceBuilder().withPrincipals("cluster.local/ns/default/sa/sleep").build())
+          new RuleFromBuilder().withSource(new SourceBuilder().withPrincipals("cluster.local/ns/default/sa/sleep").build())
             .build(),
-          new Rule_FromBuilder().withSource(new SourceBuilder().withNamespaces("dev").build()).build())
-        .withTo(new Rule_ToBuilder().withOperation(new OperationBuilder().withMethods("GET").build()).build())
+          new RuleFromBuilder().withSource(new SourceBuilder().withNamespaces("dev").build()).build())
+        .withTo(new RuleToBuilder().withOperation(new OperationBuilder().withMethods("GET").build()).build())
         .withWhen(new ConditionBuilder().withKey("request.auth.claims[iss]").withValues("https://accounts.google.com").build())
         .build())
       .endInternalSpec()

@@ -13,7 +13,7 @@
         },
         "type": {
           "$ref": "#/definitions/istio_io_api_analysis_v1alpha1_AnalysisMessageBase_Type",
-          "existingJavaType": "io.fabric8.istio.internal.api.analysis.v1alpha1.AnalysisMessageBase_Type"
+          "existingJavaType": "io.fabric8.istio.internal.api.analysis.v1alpha1.AnalysisMessageBaseType"
         }
       },
       "javaType": "io.fabric8.istio.internal.api.analysis.v1alpha1.AnalysisMessageBase",
@@ -31,7 +31,7 @@
           "type": "string"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.analysis.v1alpha1.AnalysisMessageBase_Type",
+      "javaType": "io.fabric8.istio.internal.api.analysis.v1alpha1.AnalysisMessageBaseType",
       "javaInterfaces": [
         "io.fabric8.kubernetes.api.model.KubernetesResource"
       ]
@@ -134,11 +134,11 @@
       "properties": {
         "http": {
           "$ref": "#/definitions/istio_io_api_networking_v1beta1_ConnectionPoolSettings_HTTPSettings",
-          "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.ConnectionPoolSettings_HTTPSettings"
+          "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.ConnectionPoolSettingsHTTPSettings"
         },
         "tcp": {
           "$ref": "#/definitions/istio_io_api_networking_v1beta1_ConnectionPoolSettings_TCPSettings",
-          "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.ConnectionPoolSettings_TCPSettings"
+          "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.ConnectionPoolSettingsTCPSettings"
         }
       },
       "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.ConnectionPoolSettings",
@@ -171,7 +171,7 @@
           "type": "boolean"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.ConnectionPoolSettings_HTTPSettings",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.ConnectionPoolSettingsHTTPSettings",
       "javaInterfaces": [
         "io.fabric8.kubernetes.api.model.KubernetesResource"
       ]
@@ -187,10 +187,10 @@
         },
         "tcp_keepalive": {
           "$ref": "#/definitions/istio_io_api_networking_v1beta1_ConnectionPoolSettings_TCPSettings_TcpKeepalive",
-          "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.ConnectionPoolSettings_TCPSettings_TcpKeepalive"
+          "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.ConnectionPoolSettingsTCPSettingsTcpKeepalive"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.ConnectionPoolSettings_TCPSettings",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.ConnectionPoolSettingsTCPSettings",
       "javaInterfaces": [
         "io.fabric8.kubernetes.api.model.KubernetesResource"
       ]
@@ -208,7 +208,7 @@
           "existingJavaType": "java.time.Duration"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.ConnectionPoolSettings_TCPSettings_TcpKeepalive",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.ConnectionPoolSettingsTCPSettingsTcpKeepalive",
       "javaInterfaces": [
         "io.fabric8.kubernetes.api.model.KubernetesResource"
       ]
@@ -304,11 +304,11 @@
       "properties": {
         "abort": {
           "$ref": "#/definitions/istio_io_api_networking_v1beta1_HTTPFaultInjection_Abort",
-          "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Abort"
+          "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjectionAbort"
         },
         "delay": {
           "$ref": "#/definitions/istio_io_api_networking_v1beta1_HTTPFaultInjection_Delay",
-          "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Delay"
+          "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjectionDelay"
         }
       },
       "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection",
@@ -321,14 +321,14 @@
       "properties": {
         "ErrorType": {
           "$ref": "#/definitions/istio_io_api_networking_v1beta1_isHTTPFaultInjection_Abort_ErrorType",
-          "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPFaultInjection_Abort_ErrorType"
+          "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.IsHTTPFaultInjectionAbortErrorType"
         },
         "percentage": {
           "$ref": "#/definitions/istio_io_api_networking_v1beta1_Percent",
           "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.Percent"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Abort",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjectionAbort",
       "javaInterfaces": [
         "io.fabric8.kubernetes.api.model.KubernetesResource"
       ]
@@ -340,9 +340,9 @@
           "type": "string"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Abort_GrpcStatus",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjectionAbortGrpcStatus",
       "javaInterfaces": [
-        "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPFaultInjection_Abort_ErrorType"
+        "io.fabric8.istio.internal.api.networking.v1beta1.IsHTTPFaultInjectionAbortErrorType"
       ]
     },
     "istio_io_api_networking_v1beta1_HTTPFaultInjection_Abort_Http2Error": {
@@ -352,9 +352,9 @@
           "type": "string"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Abort_Http2Error",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjectionAbortHttp2Error",
       "javaInterfaces": [
-        "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPFaultInjection_Abort_ErrorType"
+        "io.fabric8.istio.internal.api.networking.v1beta1.IsHTTPFaultInjectionAbortErrorType"
       ]
     },
     "istio_io_api_networking_v1beta1_HTTPFaultInjection_Abort_HttpStatus": {
@@ -364,9 +364,9 @@
           "type": "integer"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Abort_HttpStatus",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjectionAbortHttpStatus",
       "javaInterfaces": [
-        "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPFaultInjection_Abort_ErrorType"
+        "io.fabric8.istio.internal.api.networking.v1beta1.IsHTTPFaultInjectionAbortErrorType"
       ]
     },
     "istio_io_api_networking_v1beta1_HTTPFaultInjection_Delay": {
@@ -374,7 +374,7 @@
       "properties": {
         "HttpDelayType": {
           "$ref": "#/definitions/istio_io_api_networking_v1beta1_isHTTPFaultInjection_Delay_HttpDelayType",
-          "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPFaultInjection_Delay_HttpDelayType"
+          "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.IsHTTPFaultInjectionDelayHttpDelayType"
         },
         "percent": {
           "type": "integer"
@@ -384,7 +384,7 @@
           "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.Percent"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Delay",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjectionDelay",
       "javaInterfaces": [
         "io.fabric8.kubernetes.api.model.KubernetesResource"
       ]
@@ -396,9 +396,9 @@
           "existingJavaType": "java.time.Duration"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Delay_ExponentialDelay",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjectionDelayExponentialDelay",
       "javaInterfaces": [
-        "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPFaultInjection_Delay_HttpDelayType"
+        "io.fabric8.istio.internal.api.networking.v1beta1.IsHTTPFaultInjectionDelayHttpDelayType"
       ]
     },
     "istio_io_api_networking_v1beta1_HTTPFaultInjection_Delay_FixedDelay": {
@@ -408,9 +408,9 @@
           "existingJavaType": "java.time.Duration"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Delay_FixedDelay",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjectionDelayFixedDelay",
       "javaInterfaces": [
-        "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPFaultInjection_Delay_HttpDelayType"
+        "io.fabric8.istio.internal.api.networking.v1beta1.IsHTTPFaultInjectionDelayHttpDelayType"
       ]
     },
     "istio_io_api_networking_v1beta1_HTTPMatchRequest": {
@@ -478,7 +478,7 @@
       "properties": {
         "RedirectPort": {
           "$ref": "#/definitions/istio_io_api_networking_v1beta1_isHTTPRedirect_RedirectPort",
-          "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPRedirect_RedirectPort"
+          "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.IsHTTPRedirectRedirectPort"
         },
         "authority": {
           "type": "string"
@@ -505,9 +505,9 @@
           "type": "integer"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPRedirect_DerivePort",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPRedirectDerivePort",
       "javaInterfaces": [
-        "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPRedirect_RedirectPort"
+        "io.fabric8.istio.internal.api.networking.v1beta1.IsHTTPRedirectRedirectPort"
       ]
     },
     "istio_io_api_networking_v1beta1_HTTPRedirect_Port": {
@@ -517,9 +517,9 @@
           "type": "integer"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPRedirect_Port",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPRedirectPort",
       "javaInterfaces": [
-        "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPRedirect_RedirectPort"
+        "io.fabric8.istio.internal.api.networking.v1beta1.IsHTTPRedirectRedirectPort"
       ]
     },
     "istio_io_api_networking_v1beta1_HTTPRetry": {
@@ -652,11 +652,11 @@
       "properties": {
         "request": {
           "$ref": "#/definitions/istio_io_api_networking_v1beta1_Headers_HeaderOperations",
-          "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.Headers_HeaderOperations"
+          "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.HeadersHeaderOperations"
         },
         "response": {
           "$ref": "#/definitions/istio_io_api_networking_v1beta1_Headers_HeaderOperations",
-          "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.Headers_HeaderOperations"
+          "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.HeadersHeaderOperations"
         }
       },
       "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.Headers",
@@ -683,7 +683,7 @@
           "existingJavaType": "java.util.Map\u003cString,String\u003e"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.Headers_HeaderOperations",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HeadersHeaderOperations",
       "javaInterfaces": [
         "io.fabric8.kubernetes.api.model.KubernetesResource"
       ]
@@ -777,7 +777,7 @@
       "properties": {
         "LbPolicy": {
           "$ref": "#/definitions/istio_io_api_networking_v1beta1_isLoadBalancerSettings_LbPolicy",
-          "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isLoadBalancerSettings_LbPolicy"
+          "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.IsLoadBalancerSettingsLbPolicy"
         },
         "locality_lb_setting": {
           "$ref": "#/definitions/istio_io_api_networking_v1beta1_LocalityLoadBalancerSetting",
@@ -794,12 +794,12 @@
       "properties": {
         "consistent_hash": {
           "$ref": "#/definitions/istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB",
-          "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLB"
+          "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsConsistentHashLB"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHash",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsConsistentHash",
       "javaInterfaces": [
-        "io.fabric8.istio.internal.api.networking.v1beta1.isLoadBalancerSettings_LbPolicy"
+        "io.fabric8.istio.internal.api.networking.v1beta1.IsLoadBalancerSettingsLbPolicy"
       ]
     },
     "istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB": {
@@ -807,13 +807,13 @@
       "properties": {
         "HashKey": {
           "$ref": "#/definitions/istio_io_api_networking_v1beta1_isLoadBalancerSettings_ConsistentHashLB_HashKey",
-          "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isLoadBalancerSettings_ConsistentHashLB_HashKey"
+          "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.IsLoadBalancerSettingsConsistentHashLBHashKey"
         },
         "minimum_ring_size": {
           "type": "integer"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLB",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsConsistentHashLB",
       "javaInterfaces": [
         "io.fabric8.kubernetes.api.model.KubernetesResource"
       ]
@@ -831,7 +831,7 @@
           "existingJavaType": "java.time.Duration"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLB_HTTPCookie",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsConsistentHashLBHTTPCookie",
       "javaInterfaces": [
         "io.fabric8.kubernetes.api.model.KubernetesResource"
       ]
@@ -841,12 +841,12 @@
       "properties": {
         "http_cookie": {
           "$ref": "#/definitions/istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB_HTTPCookie",
-          "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLB_HTTPCookie"
+          "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsConsistentHashLBHTTPCookie"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLB_HttpCookie",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsConsistentHashLBHttpCookie",
       "javaInterfaces": [
-        "io.fabric8.istio.internal.api.networking.v1beta1.isLoadBalancerSettings_ConsistentHashLB_HashKey"
+        "io.fabric8.istio.internal.api.networking.v1beta1.IsLoadBalancerSettingsConsistentHashLBHashKey"
       ]
     },
     "istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB_HttpHeaderName": {
@@ -856,9 +856,9 @@
           "type": "string"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLB_HttpHeaderName",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsConsistentHashLBHttpHeaderName",
       "javaInterfaces": [
-        "io.fabric8.istio.internal.api.networking.v1beta1.isLoadBalancerSettings_ConsistentHashLB_HashKey"
+        "io.fabric8.istio.internal.api.networking.v1beta1.IsLoadBalancerSettingsConsistentHashLBHashKey"
       ]
     },
     "istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB_HttpQueryParameterName": {
@@ -868,9 +868,9 @@
           "type": "string"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLB_HttpQueryParameterName",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsConsistentHashLBHttpQueryParameterName",
       "javaInterfaces": [
-        "io.fabric8.istio.internal.api.networking.v1beta1.isLoadBalancerSettings_ConsistentHashLB_HashKey"
+        "io.fabric8.istio.internal.api.networking.v1beta1.IsLoadBalancerSettingsConsistentHashLBHashKey"
       ]
     },
     "istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB_UseSourceIp": {
@@ -880,9 +880,9 @@
           "type": "boolean"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLB_UseSourceIp",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsConsistentHashLBUseSourceIp",
       "javaInterfaces": [
-        "io.fabric8.istio.internal.api.networking.v1beta1.isLoadBalancerSettings_ConsistentHashLB_HashKey"
+        "io.fabric8.istio.internal.api.networking.v1beta1.IsLoadBalancerSettingsConsistentHashLBHashKey"
       ]
     },
     "istio_io_api_networking_v1beta1_LoadBalancerSettings_Simple": {
@@ -892,9 +892,9 @@
           "type": "integer"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_Simple",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsSimple",
       "javaInterfaces": [
-        "io.fabric8.istio.internal.api.networking.v1beta1.isLoadBalancerSettings_LbPolicy"
+        "io.fabric8.istio.internal.api.networking.v1beta1.IsLoadBalancerSettingsLbPolicy"
       ]
     },
     "istio_io_api_networking_v1beta1_LocalityLoadBalancerSetting": {
@@ -905,7 +905,7 @@
           "javaOmitEmpty": true,
           "items": {
             "$ref": "#/definitions/istio_io_api_networking_v1beta1_LocalityLoadBalancerSetting_Distribute",
-            "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.LocalityLoadBalancerSetting_Distribute"
+            "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.LocalityLoadBalancerSettingDistribute"
           }
         },
         "enabled": {
@@ -916,7 +916,7 @@
           "javaOmitEmpty": true,
           "items": {
             "$ref": "#/definitions/istio_io_api_networking_v1beta1_LocalityLoadBalancerSetting_Failover",
-            "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.LocalityLoadBalancerSetting_Failover"
+            "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.LocalityLoadBalancerSettingFailover"
           }
         },
         "failover_priority": {
@@ -943,7 +943,7 @@
           "existingJavaType": "java.util.Map\u003cString,Long\u003e"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LocalityLoadBalancerSetting_Distribute",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LocalityLoadBalancerSettingDistribute",
       "javaInterfaces": [
         "io.fabric8.kubernetes.api.model.KubernetesResource"
       ]
@@ -958,7 +958,7 @@
           "type": "string"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LocalityLoadBalancerSetting_Failover",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LocalityLoadBalancerSettingFailover",
       "javaInterfaces": [
         "io.fabric8.kubernetes.api.model.KubernetesResource"
       ]
@@ -1271,7 +1271,7 @@
       "properties": {
         "MatchType": {
           "$ref": "#/definitions/istio_io_api_networking_v1beta1_isStringMatch_MatchType",
-          "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isStringMatch_MatchType"
+          "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.IsStringMatchMatchType"
         }
       },
       "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.StringMatch",
@@ -1286,9 +1286,9 @@
           "type": "string"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.StringMatch_Exact",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.StringMatchExact",
       "javaInterfaces": [
-        "io.fabric8.istio.internal.api.networking.v1beta1.isStringMatch_MatchType"
+        "io.fabric8.istio.internal.api.networking.v1beta1.IsStringMatchMatchType"
       ]
     },
     "istio_io_api_networking_v1beta1_StringMatch_Prefix": {
@@ -1298,9 +1298,9 @@
           "type": "string"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.StringMatch_Prefix",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.StringMatchPrefix",
       "javaInterfaces": [
-        "io.fabric8.istio.internal.api.networking.v1beta1.isStringMatch_MatchType"
+        "io.fabric8.istio.internal.api.networking.v1beta1.IsStringMatchMatchType"
       ]
     },
     "istio_io_api_networking_v1beta1_StringMatch_Regex": {
@@ -1310,9 +1310,9 @@
           "type": "string"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.StringMatch_Regex",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.StringMatchRegex",
       "javaInterfaces": [
-        "io.fabric8.istio.internal.api.networking.v1beta1.isStringMatch_MatchType"
+        "io.fabric8.istio.internal.api.networking.v1beta1.IsStringMatchMatchType"
       ]
     },
     "istio_io_api_networking_v1beta1_Subset": {
@@ -1445,7 +1445,7 @@
           "javaOmitEmpty": true,
           "items": {
             "$ref": "#/definitions/istio_io_api_networking_v1beta1_TrafficPolicy_PortTrafficPolicy",
-            "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.TrafficPolicy_PortTrafficPolicy"
+            "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.TrafficPolicyPortTrafficPolicy"
           }
         },
         "tls": {
@@ -1482,7 +1482,7 @@
           "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.ClientTLSSettings"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.TrafficPolicy_PortTrafficPolicy",
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.TrafficPolicyPortTrafficPolicy",
       "javaInterfaces": [
         "io.fabric8.kubernetes.api.model.KubernetesResource"
       ]
@@ -1588,34 +1588,34 @@
     },
     "istio_io_api_networking_v1beta1_isHTTPFaultInjection_Abort_ErrorType": {
       "type": "object",
-      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPFaultInjection_Abort_ErrorType"
+      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.IsHTTPFaultInjectionAbortErrorType"
     },
     "istio_io_api_networking_v1beta1_isHTTPFaultInjection_Delay_HttpDelayType": {
       "type": "object",
-      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPFaultInjection_Delay_HttpDelayType"
+      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.IsHTTPFaultInjectionDelayHttpDelayType"
     },
     "istio_io_api_networking_v1beta1_isHTTPRedirect_RedirectPort": {
       "type": "object",
-      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPRedirect_RedirectPort"
+      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.IsHTTPRedirectRedirectPort"
     },
     "istio_io_api_networking_v1beta1_isLoadBalancerSettings_ConsistentHashLB_HashKey": {
       "type": "object",
-      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isLoadBalancerSettings_ConsistentHashLB_HashKey"
+      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.IsLoadBalancerSettingsConsistentHashLBHashKey"
     },
     "istio_io_api_networking_v1beta1_isLoadBalancerSettings_LbPolicy": {
       "type": "object",
-      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isLoadBalancerSettings_LbPolicy"
+      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.IsLoadBalancerSettingsLbPolicy"
     },
     "istio_io_api_networking_v1beta1_isStringMatch_MatchType": {
       "type": "object",
-      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isStringMatch_MatchType"
+      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.IsStringMatchMatchType"
     },
     "istio_io_api_security_v1beta1_AuthorizationPolicy": {
       "type": "object",
       "properties": {
         "ActionDetail": {
           "$ref": "#/definitions/istio_io_api_security_v1beta1_isAuthorizationPolicy_ActionDetail",
-          "interfaceType": "io.fabric8.istio.internal.api.security.v1beta1.isAuthorizationPolicy_ActionDetail"
+          "interfaceType": "io.fabric8.istio.internal.api.security.v1beta1.IsAuthorizationPolicyActionDetail"
         },
         "action": {
           "type": "integer"
@@ -1645,7 +1645,7 @@
           "type": "string"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.security.v1beta1.AuthorizationPolicy_ExtensionProvider",
+      "javaType": "io.fabric8.istio.internal.api.security.v1beta1.AuthorizationPolicyExtensionProvider",
       "javaInterfaces": [
         "io.fabric8.kubernetes.api.model.KubernetesResource"
       ]
@@ -1655,12 +1655,12 @@
       "properties": {
         "provider": {
           "$ref": "#/definitions/istio_io_api_security_v1beta1_AuthorizationPolicy_ExtensionProvider",
-          "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.AuthorizationPolicy_ExtensionProvider"
+          "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.AuthorizationPolicyExtensionProvider"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.security.v1beta1.AuthorizationPolicy_Provider",
+      "javaType": "io.fabric8.istio.internal.api.security.v1beta1.AuthorizationPolicyProvider",
       "javaInterfaces": [
-        "io.fabric8.istio.internal.api.security.v1beta1.isAuthorizationPolicy_ActionDetail"
+        "io.fabric8.istio.internal.api.security.v1beta1.IsAuthorizationPolicyActionDetail"
       ]
     },
     "istio_io_api_security_v1beta1_Condition": {
@@ -1820,11 +1820,11 @@
       "properties": {
         "mtls": {
           "$ref": "#/definitions/istio_io_api_security_v1beta1_PeerAuthentication_MutualTLS",
-          "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.PeerAuthentication_MutualTLS"
+          "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.PeerAuthenticationMutualTLS"
         },
         "port_level_mtls": {
           "type": "object",
-          "existingJavaType": "java.util.Map\u003cLong,io.fabric8.istio.internal.api.security.v1beta1.PeerAuthentication_MutualTLS\u003e"
+          "existingJavaType": "java.util.Map\u003cLong,io.fabric8.istio.internal.api.security.v1beta1.PeerAuthenticationMutualTLS\u003e"
         },
         "selector": {
           "$ref": "#/definitions/istio_io_api_type_v1beta1_WorkloadSelector",
@@ -1843,7 +1843,7 @@
           "type": "integer"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.security.v1beta1.PeerAuthentication_MutualTLS",
+      "javaType": "io.fabric8.istio.internal.api.security.v1beta1.PeerAuthenticationMutualTLS",
       "javaInterfaces": [
         "io.fabric8.kubernetes.api.model.KubernetesResource"
       ]
@@ -1877,7 +1877,7 @@
           "javaOmitEmpty": true,
           "items": {
             "$ref": "#/definitions/istio_io_api_security_v1beta1_Rule_From",
-            "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.Rule_From"
+            "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.RuleFrom"
           }
         },
         "to": {
@@ -1885,7 +1885,7 @@
           "javaOmitEmpty": true,
           "items": {
             "$ref": "#/definitions/istio_io_api_security_v1beta1_Rule_To",
-            "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.Rule_To"
+            "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.RuleTo"
           }
         },
         "when": {
@@ -1910,7 +1910,7 @@
           "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.Source"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.security.v1beta1.Rule_From",
+      "javaType": "io.fabric8.istio.internal.api.security.v1beta1.RuleFrom",
       "javaInterfaces": [
         "io.fabric8.kubernetes.api.model.KubernetesResource"
       ]
@@ -1923,7 +1923,7 @@
           "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.Operation"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.security.v1beta1.Rule_To",
+      "javaType": "io.fabric8.istio.internal.api.security.v1beta1.RuleTo",
       "javaInterfaces": [
         "io.fabric8.kubernetes.api.model.KubernetesResource"
       ]
@@ -2009,7 +2009,7 @@
     },
     "istio_io_api_security_v1beta1_isAuthorizationPolicy_ActionDetail": {
       "type": "object",
-      "interfaceType": "io.fabric8.istio.internal.api.security.v1beta1.isAuthorizationPolicy_ActionDetail"
+      "interfaceType": "io.fabric8.istio.internal.api.security.v1beta1.IsAuthorizationPolicyActionDetail"
     },
     "istio_io_api_telemetry_v1alpha1_AccessLogging": {
       "type": "object",
@@ -2036,7 +2036,7 @@
       "properties": {
         "MetricMatch": {
           "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_isMetricSelector_MetricMatch",
-          "interfaceType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.isMetricSelector_MetricMatch"
+          "interfaceType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.IsMetricSelectorMetricMatch"
         },
         "mode": {
           "type": "integer"
@@ -2054,9 +2054,9 @@
           "type": "string"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.MetricSelector_CustomMetric",
+      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.MetricSelectorCustomMetric",
       "javaInterfaces": [
-        "io.fabric8.istio.internal.api.telemetry.v1alpha1.isMetricSelector_MetricMatch"
+        "io.fabric8.istio.internal.api.telemetry.v1alpha1.IsMetricSelectorMetricMatch"
       ]
     },
     "istio_io_api_telemetry_v1alpha1_MetricSelector_Metric": {
@@ -2066,9 +2066,9 @@
           "type": "integer"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.MetricSelector_Metric",
+      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.MetricSelectorMetric",
       "javaInterfaces": [
-        "io.fabric8.istio.internal.api.telemetry.v1alpha1.isMetricSelector_MetricMatch"
+        "io.fabric8.istio.internal.api.telemetry.v1alpha1.IsMetricSelectorMetricMatch"
       ]
     },
     "istio_io_api_telemetry_v1alpha1_Metrics": {
@@ -2108,7 +2108,7 @@
         },
         "tag_overrides": {
           "type": "object",
-          "existingJavaType": "java.util.Map\u003cString,io.fabric8.istio.internal.api.telemetry.v1alpha1.MetricsOverrides_TagOverride\u003e"
+          "existingJavaType": "java.util.Map\u003cString,io.fabric8.istio.internal.api.telemetry.v1alpha1.MetricsOverridesTagOverride\u003e"
         }
       },
       "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.MetricsOverrides",
@@ -2126,7 +2126,7 @@
           "type": "string"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.MetricsOverrides_TagOverride",
+      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.MetricsOverridesTagOverride",
       "javaInterfaces": [
         "io.fabric8.kubernetes.api.model.KubernetesResource"
       ]
@@ -2185,7 +2185,7 @@
       "properties": {
         "custom_tags": {
           "type": "object",
-          "existingJavaType": "java.util.Map\u003cString,io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_CustomTag\u003e"
+          "existingJavaType": "java.util.Map\u003cString,io.fabric8.istio.internal.api.telemetry.v1alpha1.TracingCustomTag\u003e"
         },
         "disable_span_reporting": {
           "existingJavaType": "java.lang.Boolean"
@@ -2215,10 +2215,10 @@
       "properties": {
         "Type": {
           "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_isTracing_CustomTag_Type",
-          "interfaceType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.isTracing_CustomTag_Type"
+          "interfaceType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.IsTracingCustomTagType"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_CustomTag",
+      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.TracingCustomTag",
       "javaInterfaces": [
         "io.fabric8.kubernetes.api.model.KubernetesResource"
       ]
@@ -2228,12 +2228,12 @@
       "properties": {
         "environment": {
           "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_Tracing_Environment",
-          "existingJavaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_Environment"
+          "existingJavaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.TracingEnvironment"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_CustomTag_Environment",
+      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.TracingCustomTagEnvironment",
       "javaInterfaces": [
-        "io.fabric8.istio.internal.api.telemetry.v1alpha1.isTracing_CustomTag_Type"
+        "io.fabric8.istio.internal.api.telemetry.v1alpha1.IsTracingCustomTagType"
       ]
     },
     "istio_io_api_telemetry_v1alpha1_Tracing_CustomTag_Header": {
@@ -2241,12 +2241,12 @@
       "properties": {
         "header": {
           "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_Tracing_RequestHeader",
-          "existingJavaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_RequestHeader"
+          "existingJavaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.TracingRequestHeader"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_CustomTag_Header",
+      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.TracingCustomTagHeader",
       "javaInterfaces": [
-        "io.fabric8.istio.internal.api.telemetry.v1alpha1.isTracing_CustomTag_Type"
+        "io.fabric8.istio.internal.api.telemetry.v1alpha1.IsTracingCustomTagType"
       ]
     },
     "istio_io_api_telemetry_v1alpha1_Tracing_CustomTag_Literal": {
@@ -2254,12 +2254,12 @@
       "properties": {
         "literal": {
           "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_Tracing_Literal",
-          "existingJavaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_Literal"
+          "existingJavaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.TracingLiteral"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_CustomTag_Literal",
+      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.TracingCustomTagLiteral",
       "javaInterfaces": [
-        "io.fabric8.istio.internal.api.telemetry.v1alpha1.isTracing_CustomTag_Type"
+        "io.fabric8.istio.internal.api.telemetry.v1alpha1.IsTracingCustomTagType"
       ]
     },
     "istio_io_api_telemetry_v1alpha1_Tracing_Environment": {
@@ -2272,7 +2272,7 @@
           "type": "string"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_Environment",
+      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.TracingEnvironment",
       "javaInterfaces": [
         "io.fabric8.kubernetes.api.model.KubernetesResource"
       ]
@@ -2284,7 +2284,7 @@
           "type": "string"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_Literal",
+      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.TracingLiteral",
       "javaInterfaces": [
         "io.fabric8.kubernetes.api.model.KubernetesResource"
       ]
@@ -2299,18 +2299,18 @@
           "type": "string"
         }
       },
-      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_RequestHeader",
+      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.TracingRequestHeader",
       "javaInterfaces": [
         "io.fabric8.kubernetes.api.model.KubernetesResource"
       ]
     },
     "istio_io_api_telemetry_v1alpha1_isMetricSelector_MetricMatch": {
       "type": "object",
-      "interfaceType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.isMetricSelector_MetricMatch"
+      "interfaceType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.IsMetricSelectorMetricMatch"
     },
     "istio_io_api_telemetry_v1alpha1_isTracing_CustomTag_Type": {
       "type": "object",
-      "interfaceType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.isTracing_CustomTag_Type"
+      "interfaceType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.IsTracingCustomTagType"
     },
     "istio_io_api_type_v1beta1_WorkloadSelector": {
       "type": "object",
@@ -2944,7 +2944,7 @@
     },
     "istio_io_api_analysis_v1alpha1_AnalysisMessageBase_Type": {
       "$ref": "#/definitions/istio_io_api_analysis_v1alpha1_AnalysisMessageBase_Type",
-      "existingJavaType": "io.fabric8.istio.internal.api.analysis.v1alpha1.AnalysisMessageBase_Type"
+      "existingJavaType": "io.fabric8.istio.internal.api.analysis.v1alpha1.AnalysisMessageBaseType"
     },
     "istio_io_api_meta_v1alpha1_IstioCondition": {
       "$ref": "#/definitions/istio_io_api_meta_v1alpha1_IstioCondition",
@@ -2964,15 +2964,15 @@
     },
     "istio_io_api_networking_v1beta1_ConnectionPoolSettings_HTTPSettings": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_ConnectionPoolSettings_HTTPSettings",
-      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.ConnectionPoolSettings_HTTPSettings"
+      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.ConnectionPoolSettingsHTTPSettings"
     },
     "istio_io_api_networking_v1beta1_ConnectionPoolSettings_TCPSettings": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_ConnectionPoolSettings_TCPSettings",
-      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.ConnectionPoolSettings_TCPSettings"
+      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.ConnectionPoolSettingsTCPSettings"
     },
     "istio_io_api_networking_v1beta1_ConnectionPoolSettings_TCPSettings_TcpKeepalive": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_ConnectionPoolSettings_TCPSettings_TcpKeepalive",
-      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.ConnectionPoolSettings_TCPSettings_TcpKeepalive"
+      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.ConnectionPoolSettingsTCPSettingsTcpKeepalive"
     },
     "istio_io_api_networking_v1beta1_Delegate": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_Delegate",
@@ -2996,31 +2996,31 @@
     },
     "istio_io_api_networking_v1beta1_HTTPFaultInjection_Abort": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_HTTPFaultInjection_Abort",
-      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Abort"
+      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjectionAbort"
     },
     "istio_io_api_networking_v1beta1_HTTPFaultInjection_Abort_GrpcStatus": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_HTTPFaultInjection_Abort_GrpcStatus",
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Abort_GrpcStatus"
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjectionAbortGrpcStatus"
     },
     "istio_io_api_networking_v1beta1_HTTPFaultInjection_Abort_Http2Error": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_HTTPFaultInjection_Abort_Http2Error",
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Abort_Http2Error"
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjectionAbortHttp2Error"
     },
     "istio_io_api_networking_v1beta1_HTTPFaultInjection_Abort_HttpStatus": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_HTTPFaultInjection_Abort_HttpStatus",
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Abort_HttpStatus"
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjectionAbortHttpStatus"
     },
     "istio_io_api_networking_v1beta1_HTTPFaultInjection_Delay": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_HTTPFaultInjection_Delay",
-      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Delay"
+      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjectionDelay"
     },
     "istio_io_api_networking_v1beta1_HTTPFaultInjection_Delay_ExponentialDelay": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_HTTPFaultInjection_Delay_ExponentialDelay",
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Delay_ExponentialDelay"
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjectionDelayExponentialDelay"
     },
     "istio_io_api_networking_v1beta1_HTTPFaultInjection_Delay_FixedDelay": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_HTTPFaultInjection_Delay_FixedDelay",
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjection_Delay_FixedDelay"
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPFaultInjectionDelayFixedDelay"
     },
     "istio_io_api_networking_v1beta1_HTTPMatchRequest": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_HTTPMatchRequest",
@@ -3032,11 +3032,11 @@
     },
     "istio_io_api_networking_v1beta1_HTTPRedirect_DerivePort": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_HTTPRedirect_DerivePort",
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPRedirect_DerivePort"
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPRedirectDerivePort"
     },
     "istio_io_api_networking_v1beta1_HTTPRedirect_Port": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_HTTPRedirect_Port",
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPRedirect_Port"
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.HTTPRedirectPort"
     },
     "istio_io_api_networking_v1beta1_HTTPRetry": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_HTTPRetry",
@@ -3060,7 +3060,7 @@
     },
     "istio_io_api_networking_v1beta1_Headers_HeaderOperations": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_Headers_HeaderOperations",
-      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.Headers_HeaderOperations"
+      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.HeadersHeaderOperations"
     },
     "istio_io_api_networking_v1beta1_IstioEgressListener": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_IstioEgressListener",
@@ -3080,35 +3080,35 @@
     },
     "istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHash": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHash",
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHash"
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsConsistentHash"
     },
     "istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB",
-      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLB"
+      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsConsistentHashLB"
     },
     "istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB_HTTPCookie": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB_HTTPCookie",
-      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLB_HTTPCookie"
+      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsConsistentHashLBHTTPCookie"
     },
     "istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB_HttpCookie": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB_HttpCookie",
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLB_HttpCookie"
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsConsistentHashLBHttpCookie"
     },
     "istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB_HttpHeaderName": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB_HttpHeaderName",
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLB_HttpHeaderName"
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsConsistentHashLBHttpHeaderName"
     },
     "istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB_HttpQueryParameterName": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB_HttpQueryParameterName",
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLB_HttpQueryParameterName"
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsConsistentHashLBHttpQueryParameterName"
     },
     "istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB_UseSourceIp": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_LoadBalancerSettings_ConsistentHashLB_UseSourceIp",
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_ConsistentHashLB_UseSourceIp"
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsConsistentHashLBUseSourceIp"
     },
     "istio_io_api_networking_v1beta1_LoadBalancerSettings_Simple": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_LoadBalancerSettings_Simple",
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettings_Simple"
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsSimple"
     },
     "istio_io_api_networking_v1beta1_LocalityLoadBalancerSetting": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_LocalityLoadBalancerSetting",
@@ -3116,11 +3116,11 @@
     },
     "istio_io_api_networking_v1beta1_LocalityLoadBalancerSetting_Distribute": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_LocalityLoadBalancerSetting_Distribute",
-      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.LocalityLoadBalancerSetting_Distribute"
+      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.LocalityLoadBalancerSettingDistribute"
     },
     "istio_io_api_networking_v1beta1_LocalityLoadBalancerSetting_Failover": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_LocalityLoadBalancerSetting_Failover",
-      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.LocalityLoadBalancerSetting_Failover"
+      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.LocalityLoadBalancerSettingFailover"
     },
     "istio_io_api_networking_v1beta1_OutboundTrafficPolicy": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_OutboundTrafficPolicy",
@@ -3168,15 +3168,15 @@
     },
     "istio_io_api_networking_v1beta1_StringMatch_Exact": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_StringMatch_Exact",
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.StringMatch_Exact"
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.StringMatchExact"
     },
     "istio_io_api_networking_v1beta1_StringMatch_Prefix": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_StringMatch_Prefix",
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.StringMatch_Prefix"
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.StringMatchPrefix"
     },
     "istio_io_api_networking_v1beta1_StringMatch_Regex": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_StringMatch_Regex",
-      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.StringMatch_Regex"
+      "javaType": "io.fabric8.istio.internal.api.networking.v1beta1.StringMatchRegex"
     },
     "istio_io_api_networking_v1beta1_Subset": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_Subset",
@@ -3200,7 +3200,7 @@
     },
     "istio_io_api_networking_v1beta1_TrafficPolicy_PortTrafficPolicy": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_TrafficPolicy_PortTrafficPolicy",
-      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.TrafficPolicy_PortTrafficPolicy"
+      "existingJavaType": "io.fabric8.istio.internal.api.networking.v1beta1.TrafficPolicyPortTrafficPolicy"
     },
     "istio_io_api_networking_v1beta1_VirtualService": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_VirtualService",
@@ -3216,27 +3216,27 @@
     },
     "istio_io_api_networking_v1beta1_isHTTPFaultInjection_Abort_ErrorType": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_isHTTPFaultInjection_Abort_ErrorType",
-      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPFaultInjection_Abort_ErrorType"
+      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.IsHTTPFaultInjectionAbortErrorType"
     },
     "istio_io_api_networking_v1beta1_isHTTPFaultInjection_Delay_HttpDelayType": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_isHTTPFaultInjection_Delay_HttpDelayType",
-      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPFaultInjection_Delay_HttpDelayType"
+      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.IsHTTPFaultInjectionDelayHttpDelayType"
     },
     "istio_io_api_networking_v1beta1_isHTTPRedirect_RedirectPort": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_isHTTPRedirect_RedirectPort",
-      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isHTTPRedirect_RedirectPort"
+      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.IsHTTPRedirectRedirectPort"
     },
     "istio_io_api_networking_v1beta1_isLoadBalancerSettings_ConsistentHashLB_HashKey": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_isLoadBalancerSettings_ConsistentHashLB_HashKey",
-      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isLoadBalancerSettings_ConsistentHashLB_HashKey"
+      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.IsLoadBalancerSettingsConsistentHashLBHashKey"
     },
     "istio_io_api_networking_v1beta1_isLoadBalancerSettings_LbPolicy": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_isLoadBalancerSettings_LbPolicy",
-      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isLoadBalancerSettings_LbPolicy"
+      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.IsLoadBalancerSettingsLbPolicy"
     },
     "istio_io_api_networking_v1beta1_isStringMatch_MatchType": {
       "$ref": "#/definitions/istio_io_api_networking_v1beta1_isStringMatch_MatchType",
-      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.isStringMatch_MatchType"
+      "interfaceType": "io.fabric8.istio.internal.api.networking.v1beta1.IsStringMatchMatchType"
     },
     "istio_io_api_security_v1beta1_AuthorizationPolicy": {
       "$ref": "#/definitions/istio_io_api_security_v1beta1_AuthorizationPolicy",
@@ -3244,11 +3244,11 @@
     },
     "istio_io_api_security_v1beta1_AuthorizationPolicy_ExtensionProvider": {
       "$ref": "#/definitions/istio_io_api_security_v1beta1_AuthorizationPolicy_ExtensionProvider",
-      "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.AuthorizationPolicy_ExtensionProvider"
+      "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.AuthorizationPolicyExtensionProvider"
     },
     "istio_io_api_security_v1beta1_AuthorizationPolicy_Provider": {
       "$ref": "#/definitions/istio_io_api_security_v1beta1_AuthorizationPolicy_Provider",
-      "javaType": "io.fabric8.istio.internal.api.security.v1beta1.AuthorizationPolicy_Provider"
+      "javaType": "io.fabric8.istio.internal.api.security.v1beta1.AuthorizationPolicyProvider"
     },
     "istio_io_api_security_v1beta1_Condition": {
       "$ref": "#/definitions/istio_io_api_security_v1beta1_Condition",
@@ -3272,7 +3272,7 @@
     },
     "istio_io_api_security_v1beta1_PeerAuthentication_MutualTLS": {
       "$ref": "#/definitions/istio_io_api_security_v1beta1_PeerAuthentication_MutualTLS",
-      "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.PeerAuthentication_MutualTLS"
+      "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.PeerAuthenticationMutualTLS"
     },
     "istio_io_api_security_v1beta1_RequestAuthentication": {
       "$ref": "#/definitions/istio_io_api_security_v1beta1_RequestAuthentication",
@@ -3284,11 +3284,11 @@
     },
     "istio_io_api_security_v1beta1_Rule_From": {
       "$ref": "#/definitions/istio_io_api_security_v1beta1_Rule_From",
-      "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.Rule_From"
+      "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.RuleFrom"
     },
     "istio_io_api_security_v1beta1_Rule_To": {
       "$ref": "#/definitions/istio_io_api_security_v1beta1_Rule_To",
-      "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.Rule_To"
+      "existingJavaType": "io.fabric8.istio.internal.api.security.v1beta1.RuleTo"
     },
     "istio_io_api_security_v1beta1_Source": {
       "$ref": "#/definitions/istio_io_api_security_v1beta1_Source",
@@ -3296,7 +3296,7 @@
     },
     "istio_io_api_security_v1beta1_isAuthorizationPolicy_ActionDetail": {
       "$ref": "#/definitions/istio_io_api_security_v1beta1_isAuthorizationPolicy_ActionDetail",
-      "interfaceType": "io.fabric8.istio.internal.api.security.v1beta1.isAuthorizationPolicy_ActionDetail"
+      "interfaceType": "io.fabric8.istio.internal.api.security.v1beta1.IsAuthorizationPolicyActionDetail"
     },
     "istio_io_api_telemetry_v1alpha1_AccessLogging": {
       "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_AccessLogging",
@@ -3308,11 +3308,11 @@
     },
     "istio_io_api_telemetry_v1alpha1_MetricSelector_CustomMetric": {
       "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_MetricSelector_CustomMetric",
-      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.MetricSelector_CustomMetric"
+      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.MetricSelectorCustomMetric"
     },
     "istio_io_api_telemetry_v1alpha1_MetricSelector_Metric": {
       "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_MetricSelector_Metric",
-      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.MetricSelector_Metric"
+      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.MetricSelectorMetric"
     },
     "istio_io_api_telemetry_v1alpha1_Metrics": {
       "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_Metrics",
@@ -3324,7 +3324,7 @@
     },
     "istio_io_api_telemetry_v1alpha1_MetricsOverrides_TagOverride": {
       "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_MetricsOverrides_TagOverride",
-      "existingJavaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.MetricsOverrides_TagOverride"
+      "existingJavaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.MetricsOverridesTagOverride"
     },
     "istio_io_api_telemetry_v1alpha1_ProviderRef": {
       "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_ProviderRef",
@@ -3340,39 +3340,39 @@
     },
     "istio_io_api_telemetry_v1alpha1_Tracing_CustomTag": {
       "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_Tracing_CustomTag",
-      "existingJavaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_CustomTag"
+      "existingJavaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.TracingCustomTag"
     },
     "istio_io_api_telemetry_v1alpha1_Tracing_CustomTag_Environment": {
       "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_Tracing_CustomTag_Environment",
-      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_CustomTag_Environment"
+      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.TracingCustomTagEnvironment"
     },
     "istio_io_api_telemetry_v1alpha1_Tracing_CustomTag_Header": {
       "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_Tracing_CustomTag_Header",
-      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_CustomTag_Header"
+      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.TracingCustomTagHeader"
     },
     "istio_io_api_telemetry_v1alpha1_Tracing_CustomTag_Literal": {
       "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_Tracing_CustomTag_Literal",
-      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_CustomTag_Literal"
+      "javaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.TracingCustomTagLiteral"
     },
     "istio_io_api_telemetry_v1alpha1_Tracing_Environment": {
       "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_Tracing_Environment",
-      "existingJavaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_Environment"
+      "existingJavaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.TracingEnvironment"
     },
     "istio_io_api_telemetry_v1alpha1_Tracing_Literal": {
       "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_Tracing_Literal",
-      "existingJavaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_Literal"
+      "existingJavaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.TracingLiteral"
     },
     "istio_io_api_telemetry_v1alpha1_Tracing_RequestHeader": {
       "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_Tracing_RequestHeader",
-      "existingJavaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.Tracing_RequestHeader"
+      "existingJavaType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.TracingRequestHeader"
     },
     "istio_io_api_telemetry_v1alpha1_isMetricSelector_MetricMatch": {
       "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_isMetricSelector_MetricMatch",
-      "interfaceType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.isMetricSelector_MetricMatch"
+      "interfaceType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.IsMetricSelectorMetricMatch"
     },
     "istio_io_api_telemetry_v1alpha1_isTracing_CustomTag_Type": {
       "$ref": "#/definitions/istio_io_api_telemetry_v1alpha1_isTracing_CustomTag_Type",
-      "interfaceType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.isTracing_CustomTag_Type"
+      "interfaceType": "io.fabric8.istio.internal.api.telemetry.v1alpha1.IsTracingCustomTagType"
     },
     "istio_io_api_type_v1beta1_WorkloadSelector": {
       "$ref": "#/definitions/istio_io_api_type_v1beta1_WorkloadSelector",
