@@ -23,6 +23,7 @@ import org.slf4j.LoggerFactory;
 import io.fabric8.istio.api.security.v1beta1.AuthorizationPolicyBuilder;
 import io.fabric8.istio.api.security.v1beta1.AuthorizationPolicyList;
 import io.fabric8.istio.client.IstioClient;
+import io.fabric8.istio.internal.api.security.v1beta1.AuthorizationPolicyAction;
 import io.fabric8.istio.internal.api.security.v1beta1.ConditionBuilder;
 import io.fabric8.istio.internal.api.security.v1beta1.OperationBuilder;
 import io.fabric8.istio.internal.api.security.v1beta1.RuleBuilder;
@@ -45,7 +46,7 @@ public class AuthorizationPolicyExample {
       .endMetadata()
       .withNewInternalSpec()
       .withSelector(new WorkloadSelectorBuilder().withMatchLabels(Collections.singletonMap("app", "httpbin")).build())
-      .withAction(1)
+      .withAction(AuthorizationPolicyAction.DENY)
       .withRules(new RuleBuilder()
         .withFrom(
           new RuleFromBuilder().withSource(new SourceBuilder().withPrincipals("cluster.local/ns/default/sa/sleep").build())

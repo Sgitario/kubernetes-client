@@ -23,6 +23,7 @@ import io.fabric8.istio.api.networking.v1beta1.DestinationRuleList;
 import io.fabric8.istio.client.IstioClient;
 import io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsBuilder;
 import io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsSimple;
+import io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsSimpleLB;
 
 public class DestinationRuleExample {
   private static final String NAMESPACE = "test";
@@ -41,7 +42,8 @@ public class DestinationRuleExample {
       .withHost("ratings.prod.svc.cluster.local")
       .withNewTrafficPolicy()
       .withLoadBalancer(
-        new LoadBalancerSettingsBuilder().withLbPolicy(new LoadBalancerSettingsSimple(2)).build())
+        new LoadBalancerSettingsBuilder().withLbPolicy(new LoadBalancerSettingsSimple(LoadBalancerSettingsSimpleLB.RANDOM))
+          .build())
         .endTrafficPolicy()
         .endInternalSpec()
       .build());

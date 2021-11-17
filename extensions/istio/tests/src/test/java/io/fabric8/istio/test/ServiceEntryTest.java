@@ -28,6 +28,7 @@ import io.fabric8.istio.api.networking.v1beta1.ServiceEntry;
 import io.fabric8.istio.api.networking.v1beta1.ServiceEntryBuilder;
 import io.fabric8.istio.client.IstioClient;
 import io.fabric8.istio.internal.api.networking.v1beta1.PortBuilder;
+import io.fabric8.istio.internal.api.networking.v1beta1.ServiceEntryLocation;
 import io.fabric8.istio.mock.EnableIstioMockClient;
 import io.fabric8.istio.mock.IstioMockServer;
 import io.fabric8.kubernetes.api.model.DeletionPropagation;
@@ -62,7 +63,7 @@ class ServiceEntryTest {
       .endMetadata()
       .withNewInternalSpec()
       .withHosts("api.dropboxapi.com", "www.googleapis.com")
-      .withLocation(2)
+      .withLocation(ServiceEntryLocation.MESH_INTERNAL)
       .withPorts(new PortBuilder().withName("https").withProtocol("TLS").withNumber(443).build())
       .endInternalSpec()
       .build();
@@ -79,7 +80,7 @@ class ServiceEntryTest {
         + "\"metadata\":{\"name\":\"external-svc-https\"},"
         + "\"spec\":{"
         + "\"hosts\":[\"api.dropboxapi.com\",\"www.googleapis.com\"],"
-        + "\"location\":2,"
+        + "\"location\":1,"
         + "\"ports\":[{\"name\":\"https\",\"number\":443,\"protocol\":\"TLS\"}]}}",
       recordedRequest.getBody().readUtf8());
   }

@@ -22,6 +22,7 @@ import io.fabric8.istio.api.networking.v1beta1.ServiceEntryBuilder;
 import io.fabric8.istio.api.networking.v1beta1.ServiceEntryList;
 import io.fabric8.istio.client.IstioClient;
 import io.fabric8.istio.internal.api.networking.v1beta1.PortBuilder;
+import io.fabric8.istio.internal.api.networking.v1beta1.ServiceEntryLocation;
 
 public class ServiceEntryExample {
   private static final String NAMESPACE = "test";
@@ -38,7 +39,7 @@ public class ServiceEntryExample {
       .endMetadata()
       .withNewInternalSpec()
       .withHosts("api.dropboxapi.com", "www.googleapis.com")
-      .withLocation(2)
+      .withLocation(ServiceEntryLocation.MESH_INTERNAL)
       .withPorts(new PortBuilder().withName("https").withProtocol("TLS").withNumber(443).build())
       .endInternalSpec()
       .build());

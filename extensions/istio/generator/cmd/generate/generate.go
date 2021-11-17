@@ -125,7 +125,10 @@ func main() {
 		},
 	}
 
-	json := schemagen.GenerateSchemaWithAllOptions("http://fabric8.io/istio/IstioSchema#", crdLists, typesDescriptors, providedPackages, manualTypeMap, packageMapping, mappingSchema, providedTypes, constraints, interfacesMapping, javaNameRules, "io.fabric8")
+	// custom enum mapping
+	enumMapping := map[reflect.Type]schemagen.EnumDescriptor{}
+
+	json := schemagen.GenerateSchemaWithAllOptions("http://fabric8.io/istio/IstioSchema#", crdLists, typesDescriptors, providedPackages, manualTypeMap, packageMapping, mappingSchema, providedTypes, constraints, interfacesMapping, javaNameRules, enumMapping, "io.fabric8")
 
 	fmt.Println(json)
 }

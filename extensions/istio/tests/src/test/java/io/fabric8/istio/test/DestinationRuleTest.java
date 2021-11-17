@@ -32,6 +32,7 @@ import io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsCons
 import io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsConsistentHashLBBuilder;
 import io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsConsistentHashLBHttpHeaderName;
 import io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsSimple;
+import io.fabric8.istio.internal.api.networking.v1beta1.LoadBalancerSettingsSimpleLB;
 import io.fabric8.istio.mock.EnableIstioMockClient;
 import io.fabric8.istio.mock.IstioMockServer;
 import io.fabric8.kubernetes.api.model.DeletionPropagation;
@@ -68,7 +69,8 @@ class DestinationRuleTest {
       .withHost("ratings.prod.svc.cluster.local")
       .withNewTrafficPolicy()
       .withLoadBalancer(
-        new LoadBalancerSettingsBuilder().withLbPolicy(new LoadBalancerSettingsSimple(2)).build())
+        new LoadBalancerSettingsBuilder().withLbPolicy(new LoadBalancerSettingsSimple(LoadBalancerSettingsSimpleLB.RANDOM))
+          .build())
       .endTrafficPolicy()
       .endInternalSpec()
       .build();
